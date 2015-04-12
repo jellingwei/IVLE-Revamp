@@ -79,7 +79,7 @@ a:hover {color: #6e6a74;}
 \* ==================== */
 
 .container {
-    margin: 0 auto;
+    /*margin: 0 auto;*/
     width: auto;
 }
 
@@ -182,7 +182,7 @@ html, body, section,
 /* *** Menu *** */
 .menu {
     width: 15%;
-    border: 1px solid #252329;
+    /*border: 1px solid #252329;*/
     background: #34313A;
     overflow: auto;
 }
@@ -424,7 +424,7 @@ html, body, section,
 /* *** Email Content *** */
 .email-content {
     border-left: 1px solid #c9c4d2;
-    width: 60%;
+    width: 75%;
     overflow: auto;
 }
 
