@@ -22,3 +22,15 @@ $(".close-menu").click( function() {
 	}
 
 });
+
+// pre-emails
+// load announcements
+$(".pre-emails-wrapper").click(function () {
+	$(".pre-emails-wrapper").removeClass('active');
+	$(this).addClass('active');
+
+	// console.log($(this).index());
+
+});
+
+// view-email
