@@ -30,6 +30,15 @@ $(".pre-emails-wrapper").click(function () {
 	$(this).addClass('active');
 
 	// console.log($(this).index());
+	var index = $(this).index() - 1;
+
+	if (index > 2) {
+		index = 3;
+	}
+	$(".email-title-header").html("");
+	$(".email-title-header").append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
+	$(".email-inside-content").html("");
+	$(".email-inside-content").append(announcements[index].content);
 
 });
 
