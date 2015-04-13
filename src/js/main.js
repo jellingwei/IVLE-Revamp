@@ -37,10 +37,21 @@ function loadAnnouncementsList() {
     announcementsContainer.html("");
 
     for (var i = 0; i < announcements.length; i++) {
-
         var announcement = announcements[i];
         // TODO:
         announcementsContainer.append(getDateHeaderHtml(announcement.time));
+        var announcementHtml = '<div class="pre-emails-wrapper"><div class="pre-email-head">' +
+            '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
+            '<div class="right"><span class="pre-emailstime">' + announcement.time.toLocaleTimeString() + '</span>' +
+            '<span class="middot">&middot;</span>' +
+            '<span class="pre-emails-checkin"></span>' +
+            '<span class="middot">&middot;</span>' +
+            '<span class="pre-emails-dropdown"></span>' +
+            '</div></div>' +
+            '<div class="pre-email-body">' +
+            '<h4 class="pre-email-h4">' + announcement.title + '</h4>' +
+            '<p class="pre-email-p">asd</p></div></div>';
+        announcementsContainer.append(announcementHtml);
     }
 }
 
@@ -55,7 +66,7 @@ function getDateHeaderHtml(date) {
     } else if (date.toDateString() === yesterdayDate.toDateString()) {
         value = "Yesterday";
     } else {
-        value = date.toLocaleDateString();
+        value = date.toDateString();
     }
     return '<h3 class="pre-email-dates">' + value + '</h3>';
 }
