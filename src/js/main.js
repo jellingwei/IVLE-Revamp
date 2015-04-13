@@ -61,20 +61,27 @@ function stripHtmlTags(string) {
     return string.replace(/(<([^>]+)>)/ig, "");
 }
 
+var displayedHeaders = {};
+
 function getDateHeaderHtml(date) {
     var todayDate = new Date();
     var yesterdayDate = new Date();
     yesterdayDate.setDate(todayDate.getDate() - 1);
 
     var value = "";
-    if (date.toDateString() === todayDate.toDateString()) {
+    if (date.toDateString() === todayDate.toDateString() && !displayedHeaders[date.toDateString()]) {
+        displayedHeaders[date.toDateString()] = true;
         value = "Today";
-    } else if (date.toDateString() === yesterdayDate.toDateString()) {
+    } else if (date.toDateString() === yesterdayDate.toDateString() && !displayedHeaders[date.toDateString()]) {
+        displayedHeaders[date.toDateString()] = true;
         value = "Yesterday";
-    } else {
+    } else if (!displayedHeaders[date.toDateString()]){
+        displayedHeaders[date.toDateString()] = true;
         value = date.toDateString();
     }
-    return '<h3 class="pre-email-dates">' + value + '</h3>';
+    if (value != "") {
+        return '<h3 class="pre-email-dates">' + value + '</h3>';
+    }
 }
 
 // load announcements
