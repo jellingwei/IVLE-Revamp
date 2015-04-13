@@ -41,7 +41,7 @@ function loadAnnouncementsList() {
         var announcement = announcements[i];
         // TODO:
         announcementsContainer.append(getDateHeaderHtml(announcement.time));
-        var announcementHtml = '<div class="pre-emails-wrapper" data-announcement-id="' + i +'"><div class="pre-email-head">' +
+        var announcementHtml = '<div class="pre-emails-wrapper" data-announcement-id="' + i + '"><div class="pre-email-head">' +
             '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
             '<div class="right"><span class="pre-emailstime">' + announcement.time.toLocaleTimeString() + '</span>' +
             '<span class="middot">&middot;</span>' +
@@ -58,7 +58,7 @@ function loadAnnouncementsList() {
 
 function stripHtmlTags(string) {
     // CREDIT: https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/
-    return string.replace(/(<([^>]+)>)/ig,"");
+    return string.replace(/(<([^>]+)>)/ig, "");
 }
 
 function getDateHeaderHtml(date) {
