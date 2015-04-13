@@ -2,6 +2,8 @@ $(document).ready(function () {
     $(".pre-emails").slimscroll({
         height: 'auto'
     });
+
+    loadAnnouncementsList();
 });
 
 // menu
@@ -24,6 +26,31 @@ $(".close-menu").click(function () {
 });
 
 // pre-emails
+
+function loadAnnouncementsList() {
+    var todayDate = new Date();
+    var todayHeader = '<h3 class="pre-email-dates">Today</h3>';
+    var yesterdayHeader = '<h3 class="pre-email-dates">Yesterday</h3>';
+    var dateHeader = '<h3 class="pre-email-dates"></h3>';
+
+    var announcementsContainer = $(".pre-emails");
+    announcementsContainer.html("");
+
+    for (var i = 0; i < announcements.length; i++) {
+
+        var announcement = announcements[i];
+        console.log(announcement.time.toDateString());
+        console.log(todayDate.toDateString());
+        if (announcement.time.toDateString() === todayDate.toDateString()) {
+            announcementsContainer.append(getDateHeaderHtml("Today"));
+        }
+    }
+}
+
+function getDateHeaderHtml(date) {
+    return '<h3 class="pre-email-dates">' + date + '</h3>';
+}
+
 // load announcements
 $(".pre-emails-wrapper").click(function () {
     $(".pre-emails-wrapper").removeClass('active');
