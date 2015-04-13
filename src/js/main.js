@@ -51,9 +51,14 @@ function loadAnnouncementsList() {
             '</div></div>' +
             '<div class="pre-email-body">' +
             '<h4 class="pre-email-h4">' + announcement.title + '</h4>' +
-            '<p class="pre-email-p truncate">' + announcement.content + '</p></div></div>';
+            '<p class="pre-email-p truncate">' + stripHtmlTags(announcement.content) + '</p></div></div>';
         announcementsContainer.append(announcementHtml);
     }
+}
+
+function stripHtmlTags(string) {
+    // CREDIT: https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/
+    return string.replace(/(<([^>]+)>)/ig,"");
 }
 
 function getDateHeaderHtml(date) {
