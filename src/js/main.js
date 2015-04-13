@@ -39,16 +39,25 @@ function loadAnnouncementsList() {
     for (var i = 0; i < announcements.length; i++) {
 
         var announcement = announcements[i];
-        console.log(announcement.time.toDateString());
-        console.log(todayDate.toDateString());
-        if (announcement.time.toDateString() === todayDate.toDateString()) {
-            announcementsContainer.append(getDateHeaderHtml("Today"));
-        }
+        // TODO:
+        announcementsContainer.append(getDateHeaderHtml(announcement.time));
     }
 }
 
 function getDateHeaderHtml(date) {
-    return '<h3 class="pre-email-dates">' + date + '</h3>';
+    var todayDate = new Date();
+    var yesterdayDate = new Date();
+    yesterdayDate.setDate(todayDate.getDate() - 1);
+
+    var value = "";
+    if (date.toDateString() === todayDate.toDateString()) {
+        value = "Today";
+    } else if (date.toDateString() === yesterdayDate.toDateString()) {
+        value = "Yesterday";
+    } else {
+        value = date.toLocaleDateString();
+    }
+    return '<h3 class="pre-email-dates">' + value + '</h3>';
 }
 
 // load announcements
