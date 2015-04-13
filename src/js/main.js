@@ -4,6 +4,7 @@ $(document).ready(function () {
     });
 
     loadAnnouncementsList();
+    loadAnnouncementsHandler();
 });
 
 // menu
@@ -40,7 +41,7 @@ function loadAnnouncementsList() {
         var announcement = announcements[i];
         // TODO:
         announcementsContainer.append(getDateHeaderHtml(announcement.time));
-        var announcementHtml = '<div class="pre-emails-wrapper"><div class="pre-email-head">' +
+        var announcementHtml = '<div class="pre-emails-wrapper" data-announcement-id="' + i +'"><div class="pre-email-head">' +
             '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
             '<div class="right"><span class="pre-emailstime">' + announcement.time.toLocaleTimeString() + '</span>' +
             '<span class="middot">&middot;</span>' +
@@ -72,21 +73,20 @@ function getDateHeaderHtml(date) {
 }
 
 // load announcements
-$(".pre-emails-wrapper").click(function () {
-    $(".pre-emails-wrapper").removeClass('active');
-    $(this).addClass('active');
+function loadAnnouncementsHandler() {
+    $(".pre-emails-wrapper").click(function () {
+        $(".pre-emails-wrapper").removeClass('active');
+        $(this).addClass('active');
 
-    // console.log($(this).index());
-    var index = $(this).index() - 1;
+        //console.log($(this).data('announcement-id'));
+        var index = $(this).data('announcement-id');
 
-    if (index > 2) {
-        index = 3;
-    }
-    $(".email-title-header").html("");
-    $(".email-title-header").append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
-    $(".email-inside-content").html("");
-    $(".email-inside-content").append(announcements[index].content);
+        $(".email-title-header").html("");
+        $(".email-title-header").append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
+        $(".email-inside-content").html("");
+        $(".email-inside-content").append(announcements[index].content);
 
-});
+    });
+}
 
 // view-email
