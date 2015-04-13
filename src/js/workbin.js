@@ -41,7 +41,7 @@ function loadWorkbinList() {
         var content = workbinContent[i];
         
         workbinContainer.append(getDateHeaderHtml(content.time));
-        var html = '<div class="pre-emails-wrapper" data-announcement-id="' + i + '"><div class="pre-email-head">' +
+        var html = '<div class="workbinContent pre-emails-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '"><div class="pre-email-head">' +
             '<span class="pre-emails-name">' + content.moduleCode + '</span>' +
             '<span class="">&nbsp;&nbsp;&nbsp;&nbsp;' + content.folder + '</span>' +
             '<div class="right"><span class="pre-emailstime">' + content.time.toLocaleTimeString() + '</span>' +
