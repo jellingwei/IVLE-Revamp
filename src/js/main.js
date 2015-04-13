@@ -50,7 +50,7 @@ function loadAnnouncementsList() {
             '</div></div>' +
             '<div class="pre-email-body">' +
             '<h4 class="pre-email-h4">' + announcement.title + '</h4>' +
-            '<p class="pre-email-p">asd</p></div></div>';
+            '<p class="pre-email-p truncate">' + announcement.content + '</p></div></div>';
         announcementsContainer.append(announcementHtml);
     }
 }
