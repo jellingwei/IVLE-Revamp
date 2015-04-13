@@ -5,10 +5,5 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore IntelliJ Idea personal configuration.
-/.idea/workspace.xml
-/.idea/.generators
-/.idea/.rakeTasks
-/.idea/dataSources.ids
-/.idea/dataSources.xml
-/.idea/dictionaries
+/.idea
 
