@@ -29,11 +29,6 @@ $(".close-menu").click(function () {
 // pre-emails
 
 function loadAnnouncementsList() {
-    var todayDate = new Date();
-    var todayHeader = '<h3 class="pre-email-dates">Today</h3>';
-    var yesterdayHeader = '<h3 class="pre-email-dates">Yesterday</h3>';
-    var dateHeader = '<h3 class="pre-email-dates"></h3>';
-
     var announcementsContainer = $(".pre-emails");
     announcementsContainer.html("");
 
