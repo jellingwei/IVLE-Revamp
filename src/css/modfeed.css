@@ -5,3 +5,28 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.announcements-filters {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: inline;
+}
+
+.announcements-filters li, .announcements-filters .selected li  {
+	display: inline;
+	border-radius: 2px;
+	padding: 2px 5px 2px 5px;
+}
+
+.announcements-filters .selected li {
+	background-color: red;
+	color: #FFFFFF;
+}
+
+.announcements-filters li:hover {
+	background-color: red;
+	color: #FFFFFF;
+	cursor: pointer;
+}
