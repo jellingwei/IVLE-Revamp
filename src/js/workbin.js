@@ -5,6 +5,7 @@ $(document).ready(function () {
 
     loadWorkbinList();
     loadAnnouncementsHandler();
+    setClickHandlersOnSidebarItems();
 });
 
 // menu
@@ -105,4 +106,22 @@ function loadAnnouncementsHandler() {
     });
 }
 
-// view-email
+// view-modules content
+
+function setClickHandlersOnSidebarItems() {
+    $(".category-modules ul li").click(function () {
+        
+        var modCode = $(this).data("module");
+        var contentToShow = 
+               $(".workbinContent").filter(function(val) {
+                        return ($(this).hasClass(modCode));
+                });
+        contentToShow.show();
+        
+        var contentToHide = 
+               $(".workbinContent").filter(function(val) {
+                        return $(this).hasClass(modCode) !== true;
+                });
+        contentToHide.hide();
+    });
+}
