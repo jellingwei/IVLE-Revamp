@@ -108,20 +108,57 @@ function loadAnnouncementsHandler() {
 
 // view-modules content
 
+var viewingModule;
+var viewingFolder;
+
 function setClickHandlersOnSidebarItems() {
     $(".category-modules ul li").click(function () {
         
         var modCode = $(this).data("module");
-        var contentToShow = 
+        
+        viewingModule = modCode;
+        hideWorkbinItems();
+    });
+    
+    $(".category-folders ul li").click(function () {
+         var folder = $(this).data("folder");
+        
+         viewingFolder = folder;    
+        hideWorkbinItems();
+
+    });    
+}
+
+function hideWorkbinItems() {
+     var contentToShow = 
                $(".workbinContent").filter(function(val) {
-                        return ($(this).hasClass(modCode));
+                    if (viewingModule && viewingFolder) {
+                        return ($(this).hasClass(viewingFolder) && $(this).hasClass(viewingModule));
+                    } else if (viewingModule) {
+                        return ($(this).hasClass(viewingModule));
+                    } else if (viewingFolder) {
+                        return ($(this).hasClass(viewingFolder));
+                    } else {
+                        return true;   
+                    }
+                    
                 });
         contentToShow.show();
         
         var contentToHide = 
-               $(".workbinContent").filter(function(val) {
-                        return $(this).hasClass(modCode) !== true;
+              $(".workbinContent").filter(function(val) {
+                    if (viewingModule && viewingFolder) {
+                        return ($(this).hasClass(viewingFolder) !== true || $(this).hasClass(viewingModule) !== true);
+                    } else if (viewingModule) {
+                        return ($(this).hasClass(viewingModule) !== true);
+                    } else if (viewingFolder) {
+                        return ($(this).hasClass(viewingFolder) !== true);
+                    } else {
+                        return false;   
+                    }
+                    
                 });
-        contentToHide.hide();
-    });
+        contentToHide.hide();   
 }
+
+
