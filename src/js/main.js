@@ -40,7 +40,7 @@ function loadAnnouncementsList() {
             '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
             '<div class="right"><span class="pre-emailstime">' + announcement.time.toLocaleTimeString() + '</span>' +
             '<span class="middot">&middot;</span>' +
-            '<span class="pre-emails-checkin"></span>' +
+            '<span class="pre-announcements-favourite"></span>' +
             '<span class="middot">&middot;</span>' +
             '<span class="pre-emails-dropdown"></span>' +
             '</div></div>' +

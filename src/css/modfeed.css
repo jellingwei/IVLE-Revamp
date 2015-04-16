@@ -30,3 +30,12 @@
 	color: #FFFFFF;
 	cursor: pointer;
 }
+
+.pre-announcements-favourite {
+    display: inline-block;
+    background: url('../img/favourite-icon.png') no-repeat top left;
+    background-size: 17px;
+    height: 17px;
+    width: 17px;
+    vertical-align: middle;
+}
