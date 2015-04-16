@@ -39,3 +39,10 @@
     width: 17px;
     vertical-align: middle;
 }
+
+.pre-announcements-favourite:hover {
+    background: url('../img/favourite-icon-selected.png') no-repeat top left;
+    background-size: 17px;
+    height: 17px;
+    width: 17px;
+}
