@@ -35,6 +35,8 @@ function loadAnnouncementsList(predicate) {
     announcementsContainer.html("");
     displayedHeaders = [];
 
+    var unreadCount = 0;
+
     for (var i = 0; i < announcements.length; i++) {
         var announcement = announcements[i];
         var favouritedClass = announcement.favourited ? "selected" : "";
@@ -55,7 +57,12 @@ function loadAnnouncementsList(predicate) {
                 '<p class="pre-email-p truncate">' + stripHtmlTags(announcement.content) + '</p></div></div>';
             announcementsContainer.append(announcementHtml);
         }
+
+        if (announcement.read) {
+            unreadCount++;
+        }
     }
+    $('#announcements-counter').text(unreadCount);
 }
 
 function stripHtmlTags(string) {
