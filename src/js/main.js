@@ -29,13 +29,12 @@ $(".close-menu").click(function () {
 });
 
 // pre-emails
-
+var unreadAnnouncementCount = 0;
 function loadAnnouncementsList(predicate) {
     var announcementsContainer = $(".pre-emails");
     announcementsContainer.html("");
     displayedHeaders = [];
-
-    var unreadCount = 0;
+    unreadAnnouncementCount = 0;
 
     for (var i = 0; i < announcements.length; i++) {
         var announcement = announcements[i];
@@ -58,11 +57,15 @@ function loadAnnouncementsList(predicate) {
             announcementsContainer.append(announcementHtml);
         }
 
-        if (announcement.read) {
-            unreadCount++;
+        if (!announcement.read) {
+            unreadAnnouncementCount++;
         }
     }
-    $('#announcements-counter').text(unreadCount);
+    updateAnnouncementCounter();
+}
+
+function updateAnnouncementCounter() {
+    $('#announcements-counter').text(unreadAnnouncementCount);
 }
 
 function stripHtmlTags(string) {
@@ -124,6 +127,12 @@ function loadAnnouncementsHandler() {
         var index = $(this).data('announcement-id');
         var announcement = announcements[index];
         var favouritedClass = announcement.favourited ? "selected" : "";
+
+        if (!announcement.read) {
+            announcement.read = true;
+            unreadAnnouncementCount--;
+            updateAnnouncementCounter();
+        }
 
         var announcementTitleHeader = $('.email-title-header');
         var announcementContent = $('.email-inside-content');
