@@ -45,7 +45,7 @@ function loadWorkbinList() {
         var html = '<div class="workbinContent pre-emails-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '"><div class="pre-email-head">' +
             '<span class="pre-emails-name">' + content.moduleCode + '</span>' +
             '<span class="">&nbsp;&nbsp;&nbsp;&nbsp;' + content.folder + '</span>' +
-            '<div class="right"><span class="pre-emailstime">' + content.time.toLocaleTimeString() + '</span>' +
+            '<div class="right"><span class="pre-emailstime">' + getNiceTimeString(content.time) + '</span>' +
             '</div></div>' +
             '<div class="pre-email-body">' +
             '<a href ="' + content.fileurl + '">' +
@@ -100,6 +100,17 @@ function loadAnnouncementsHandler() {
         $(".email-inside-content").append(announcements[index].content);
 
     });
+}
+
+// format time nicely
+function getNiceTimeString(date){
+    var value;
+    value = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+    value += ':';
+    value += date.getMinutes();
+    value += ' ';
+    value += date.getHours() >= 12 ? 'PM' : 'AM';
+    return value;
 }
 
 // view-modules content
