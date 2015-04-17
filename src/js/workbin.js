@@ -38,7 +38,7 @@ function loadWorkbinList() {
 
     var workbinContainer = $(".pre-emails");
     workbinContainer.html("");
-
+     sortWorkbinContentByDate();
     for (var i = 0; i < workbinContent.length; i++) {
         var content = workbinContent[i];
         
@@ -224,4 +224,11 @@ function hideFolders() {
     
     foldersToShow.show();
     foldersToHide.hide();
+}
+
+function sortWorkbinContentByDate() {
+    workbinContent.sort(function(item1, item2) {
+        return item1.time < item2.time;
+    });
+    
 }
