@@ -2,6 +2,7 @@ console.log("dummy announcements loaded");
 // dummy data for announcements
 var announcements = [
 { 
+	id: 0,
 	moduleCode: "CS2106",
 	author: "Lubomir Bic",
 	title: "Last lecture on Fri April 17",
@@ -13,7 +14,8 @@ var announcements = [
     // reminder added?
     // tags?
 },
-{ 
+{
+	id: 1,
 	moduleCode: "CS3240",
 	author: "Bimlesh Wadhwa",
 	title: "Poster Printing for STePS",
@@ -25,7 +27,8 @@ var announcements = [
     // reminder added?
     // tags?
 },
-{ 
+{
+	id: 2,
 	moduleCode: "CS2106",
 	author: "",
 	title: "Final Project Assessment Meeting Times", 
@@ -37,8 +40,9 @@ var announcements = [
     // reminder added?
     // tags?
 },
-{ 
-	moduleCode: "",
+{
+	id: 3,
+	moduleCode: "CZ2107",
 	author: "",
 	title: "I taught my dog how to smile!", 
 	content: "I gave Rusty a bone and he gave me a smile! I was so overwhelmed with joy I just had to take out my Canon 60D and snap the moment. I’m thinking about getting it framed, know of any places that do cheap frames?Let me know how things are with you!",

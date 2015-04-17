@@ -42,7 +42,7 @@ function loadAnnouncementsList(predicate) {
         if (predicate == null || predicate(announcement)) {
             // TODO:
             announcementsContainer.append(getDateHeaderHtml(announcement.time));
-            var announcementHtml = '<div class="pre-emails-wrapper" data-announcement-id="' + i + '"><div class="pre-email-head">' +
+            var announcementHtml = '<div class="pre-emails-wrapper" data-announcement-id="' + announcement.id + '"><div class="pre-email-head">' +
                 '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
                 '<div class="right"><span class="pre-emailstime">' + announcement.time.toLocaleTimeString() + '</span>' +
                 '<span class="middot">&middot;</span>' +
@@ -135,6 +135,7 @@ function loadFilters() {
                 };
                 loadAnnouncementsList(predicate);
         }
+        loadAnnouncementsHandler();
     });
 }
 
