@@ -74,3 +74,8 @@
     height: 17px;
     width: 17px;
 }
+
+.unread  * {
+    /*background-color: #d0d0d0;*/
+    font-weight: bolder;
+}
