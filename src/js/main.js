@@ -1,5 +1,3 @@
-var favouriteAnnouncements = [];
-
 $(document).ready(function () {
     $(".pre-emails").slimscroll({
         height: 'auto'
@@ -104,7 +102,7 @@ function loadFavouriteButtons() {
     favouriteButtons.click(function () {
         $(this).toggleClass('selected');
         var announcementId = $(this).parents('.pre-emails-wrapper').data('announcement-id');
-        favouriteAnnouncements[announcementId] = $(this).hasClass('selected');
+        announcements[announcementId].favourited = $(this).hasClass('selected');
     });
 }
 
