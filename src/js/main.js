@@ -7,6 +7,7 @@ $(document).ready(function () {
     loadAnnouncementsHandler();
     loadFilters();
     loadFavouriteButtons();
+    setClickHandlersOnSidebarItems();
 });
 
 // menu
@@ -40,11 +41,12 @@ function loadAnnouncementsList(predicate) {
         var announcement = announcements[i];
         var favouritedClass = announcement.favourited ? "selected" : "";
         var readClass = announcement.read ? "" : "unread";
+        var modCode = announcement.moduleCode;
 
         if (predicate == null || predicate(announcement)) {
             // TODO:
             announcementsContainer.append(getDateHeaderHtml(announcement.time));
-            var announcementHtml = '<div class="pre-emails-wrapper ' + readClass + '" data-announcement-id="' + announcement.id + '">' +
+            var announcementHtml = '<div class="pre-emails-wrapper ' + readClass + ' ' + modCode + ' announcement" data-announcement-id="' + announcement.id + '">' +
                 '<div class="pre-email-head">' +
                 '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
                 '<div class="right"><span class="pre-emailstime">' + getNiceTimeString(announcement.time) + '</span>' +
@@ -202,3 +204,41 @@ function loadFavouriteButtons() {
 }
 
 // view-email
+
+
+var viewingModule;
+
+
+function setClickHandlersOnSidebarItems() {
+    $(".category-modules ul li").click(function () {
+        
+        var modCode = $(this).data("module");
+        
+        viewingModule = modCode;
+        hideAnnouncements();
+    });
+    
+    $(".category-folders ul li").click(function () {
+         var folder = $(this).data("folder");
+        
+         viewingFolder = folder;    
+        hideAnnouncements();
+    });    
+}
+
+
+function hideAnnouncements() {
+    var contentToShow = 
+               $(".announcement").filter(function(val) {
+                        return ($(this).hasClass(viewingModule));
+                });
+        contentToShow.show();
+        
+        var contentToHide = 
+              $(".announcement").filter(function(val) {
+                        return ($(this).hasClass(viewingModule) !== true);
+
+                });
+        contentToHide.hide();   
+    
+}

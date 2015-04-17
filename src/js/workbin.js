@@ -132,7 +132,6 @@ function setClickHandlersOnSidebarItems() {
         
          viewingFolder = folder;    
         hideWorkbinItems();
-
     });    
 }
 
@@ -167,5 +166,4 @@ function hideWorkbinItems() {
                 });
         contentToHide.hide();   
 }
-
 
