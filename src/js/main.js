@@ -44,7 +44,7 @@ function loadAnnouncementsList(predicate) {
             announcementsContainer.append(getDateHeaderHtml(announcement.time));
             var announcementHtml = '<div class="pre-emails-wrapper" data-announcement-id="' + announcement.id + '"><div class="pre-email-head">' +
                 '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
-                '<div class="right"><span class="pre-emailstime">' + announcement.time.toLocaleTimeString() + '</span>' +
+                '<div class="right"><span class="pre-emailstime">' + getNiceTimeString(announcement.time) + '</span>' +
                 '<span class="middot">&middot;</span>' +
                 '<span class="pre-announcements-favourite ' + favouritedClass + '"></span>' +
                 '<span class="middot">&middot;</span>' +
@@ -88,12 +88,22 @@ function getNiceDateString(date) {
     var yesterdayDate = new Date();
     yesterdayDate.setDate(todayDate.getDate() - 1);
 
-    var value = date.toDateString() + ' ' + date.toLocaleTimeString();
+    var value = date.toDateString() + ' ' + getNiceTimeString(date);
     if (date.toDateString() === todayDate.toDateString()) {
         value = 'Today, ' + value;
     } else if (date.toDateString() === yesterdayDate.toDateString()) {
         value = 'Yesterday, ' + value;
     }
+    return value;
+}
+
+function getNiceTimeString(date){
+    var value;
+    value = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+    value += ':';
+    value += date.getMinutes();
+    value += ' ';
+    value += date.getHours() >= 12 ? 'PM' : 'AM';
     return value;
 }
 
