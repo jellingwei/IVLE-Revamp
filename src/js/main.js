@@ -175,6 +175,7 @@ function loadFilters() {
                 loadAnnouncementsList(predicate);
         }
         loadAnnouncementsHandler();
+        loadFavouriteButtons();
     });
 }
 
