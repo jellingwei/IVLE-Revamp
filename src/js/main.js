@@ -84,17 +84,17 @@ function getDateHeaderHtml(date) {
 
 // load announcements
 function loadAnnouncementsHandler() {
-    $(".pre-emails-wrapper").click(function () {
-        $(".pre-emails-wrapper").removeClass('active');
+    $('.pre-emails-wrapper').click(function () {
+        $('.pre-emails-wrapper').removeClass('active');
         $(this).addClass('active');
 
         //console.log($(this));
         var index = $(this).data('announcement-id');
 
-        $(".email-title-header").html("");
-        $(".email-title-header").append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
-        $(".email-inside-content").html("");
-        $(".email-inside-content").append(announcements[index].content);
+        $('.email-title-header').html("");
+        $('.email-title-header').append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
+        $('.email-inside-content').html("");
+        $('.email-inside-content').append(announcements[index].content);
     });
 }
 
