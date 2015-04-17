@@ -5,6 +5,7 @@ $(document).ready(function () {
 
     loadAnnouncementsList();
     loadAnnouncementsHandler();
+    loadFilters();
     loadFavouriteButtons();
 });
 
@@ -29,28 +30,31 @@ $(".close-menu").click(function () {
 
 // pre-emails
 
-function loadAnnouncementsList() {
+function loadAnnouncementsList(predicate) {
     var announcementsContainer = $(".pre-emails");
     announcementsContainer.html("");
+    displayedHeaders = [];
 
     for (var i = 0; i < announcements.length; i++) {
         var announcement = announcements[i];
         var favouritedClass = announcement.favourited ? "selected" : "";
 
-        // TODO:
-        announcementsContainer.append(getDateHeaderHtml(announcement.time));
-        var announcementHtml = '<div class="pre-emails-wrapper" data-announcement-id="' + i + '"><div class="pre-email-head">' +
-            '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
-            '<div class="right"><span class="pre-emailstime">' + announcement.time.toLocaleTimeString() + '</span>' +
-            '<span class="middot">&middot;</span>' +
-            '<span class="pre-announcements-favourite '+ favouritedClass +'"></span>' +
-            '<span class="middot">&middot;</span>' +
-            '<span class="pre-emails-dropdown"></span>' +
-            '</div></div>' +
-            '<div class="pre-email-body">' +
-            '<h4 class="pre-email-h4">' + announcement.title + '</h4>' +
-            '<p class="pre-email-p truncate">' + stripHtmlTags(announcement.content) + '</p></div></div>';
-        announcementsContainer.append(announcementHtml);
+        if (predicate == null || predicate(announcement)) {
+            // TODO:
+            announcementsContainer.append(getDateHeaderHtml(announcement.time));
+            var announcementHtml = '<div class="pre-emails-wrapper" data-announcement-id="' + i + '"><div class="pre-email-head">' +
+                '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
+                '<div class="right"><span class="pre-emailstime">' + announcement.time.toLocaleTimeString() + '</span>' +
+                '<span class="middot">&middot;</span>' +
+                '<span class="pre-announcements-favourite ' + favouritedClass + '"></span>' +
+                '<span class="middot">&middot;</span>' +
+                '<span class="pre-emails-dropdown"></span>' +
+                '</div></div>' +
+                '<div class="pre-email-body">' +
+                '<h4 class="pre-email-h4">' + announcement.title + '</h4>' +
+                '<p class="pre-email-p truncate">' + stripHtmlTags(announcement.content) + '</p></div></div>';
+            announcementsContainer.append(announcementHtml);
+        }
     }
 }
 
@@ -73,7 +77,7 @@ function getDateHeaderHtml(date) {
     } else if (date.toDateString() === yesterdayDate.toDateString() && !displayedHeaders[date.toDateString()]) {
         displayedHeaders[date.toDateString()] = true;
         value = "Yesterday";
-    } else if (!displayedHeaders[date.toDateString()]){
+    } else if (!displayedHeaders[date.toDateString()]) {
         displayedHeaders[date.toDateString()] = true;
         value = date.toDateString();
     }
@@ -84,17 +88,53 @@ function getDateHeaderHtml(date) {
 
 // load announcements
 function loadAnnouncementsHandler() {
-    $(".pre-emails-wrapper").click(function () {
-        $(".pre-emails-wrapper").removeClass('active');
+    $('.pre-emails-wrapper').click(function () {
+        $('.pre-emails-wrapper').removeClass('active');
         $(this).addClass('active');
 
         //console.log($(this));
         var index = $(this).data('announcement-id');
 
-        $(".email-title-header").html("");
-        $(".email-title-header").append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
-        $(".email-inside-content").html("");
-        $(".email-inside-content").append(announcements[index].content);
+        $('.email-title-header').html("");
+        $('.email-title-header').append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
+        $('.email-inside-content').html("");
+        $('.email-inside-content').append(announcements[index].content);
+    });
+}
+
+// initialise filters
+function loadFilters() {
+    var filters = $('.announcements-filters li');
+    filters.click(function () {
+        filters.removeClass('selected');
+        $(this).addClass('selected');
+
+        switch ($(this).attr('id')) {
+            case 'announcements-filters-read':
+                var predicate = function (announcement) {
+                    return announcement.read;
+                };
+                loadAnnouncementsList(predicate);
+                break;
+            case 'announcements-filters-unread':
+                var predicate = function (announcement) {
+                    return !announcement.read;
+                };
+                loadAnnouncementsList(predicate);
+                break;
+            case 'announcements-filters-favourites':
+                var predicate = function (announcement) {
+                    return announcement.favourited;
+                };
+                loadAnnouncementsList(predicate);
+                break;
+            case 'announcements-filters-all':
+            default:
+                var predicate = function (announcement) {
+                    return true;
+                };
+                loadAnnouncementsList(predicate);
+        }
     });
 }
 

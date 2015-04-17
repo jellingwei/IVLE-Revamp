@@ -14,13 +14,13 @@
     display: inline;
 }
 
-.announcements-filters li, .announcements-filters .selected li  {
+.announcements-filters li, .announcements-filters li.selected  {
 	display: inline;
 	border-radius: 2px;
 	padding: 2px 5px 2px 5px;
 }
 
-.announcements-filters .selected li {
+.announcements-filters li.selected {
 	background-color: red;
 	color: #FFFFFF;
 }
