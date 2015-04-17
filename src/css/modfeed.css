@@ -47,3 +47,18 @@
     height: 17px;
     width: 17px;
 }
+
+.reminder-icon {
+    background: url('../img/reminder-icon.png');
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.reminder-icon:hover,
+.reminder-icon.selected {
+    background: url('../img/reminder-icon-selected.png');
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
