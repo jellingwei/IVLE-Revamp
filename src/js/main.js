@@ -29,6 +29,14 @@ $(".close-menu").click(function () {
 
 });
 
+
+function isAnnouncementOfViewingModule(modCode) {
+    if (viewingModule) {
+        return viewingModule === modCode;   
+    }
+    return true;
+}
+
 // pre-emails
 var unreadAnnouncementCount = 0;
 function loadAnnouncementsList(predicate) {
@@ -36,6 +44,7 @@ function loadAnnouncementsList(predicate) {
     announcementsContainer.html("");
     displayedHeaders = [];
     unreadAnnouncementCount = 0;
+    
 
     for (var i = 0; i < announcements.length; i++) {
         var announcement = announcements[i];
@@ -43,7 +52,7 @@ function loadAnnouncementsList(predicate) {
         var readClass = announcement.read ? "" : "unread";
         var modCode = announcement.moduleCode;
 
-        if (predicate == null || predicate(announcement)) {
+        if (predicate == null || (predicate(announcement) && isAnnouncementOfViewingModule(modCode)) ) {
             // TODO:
             announcementsContainer.append(getDateHeaderHtml(announcement.time));
             var announcementHtml = '<div class="pre-emails-wrapper ' + readClass + ' ' + modCode + ' announcement" data-announcement-id="' + announcement.id + '">' +
@@ -215,6 +224,7 @@ function setClickHandlersOnSidebarItems() {
         var modCode = $(this).data("module");
         
         viewingModule = modCode;
+        
         hideAnnouncements();
     });
     

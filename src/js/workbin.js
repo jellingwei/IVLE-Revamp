@@ -124,7 +124,11 @@ function setClickHandlersOnSidebarItems() {
         
         var modCode = $(this).data("module");
         
-        viewingModule = modCode;
+        if (modCode === viewingModule) {
+            viewingModule = null;
+        } else{
+            viewingModule = modCode;
+        }
         
         viewingFolder = null;  // reset folder filter
         
@@ -134,8 +138,12 @@ function setClickHandlersOnSidebarItems() {
     
     $(".category-folders ul li").click(function () {
          var folder = $(this).data("folder");
-        
-         viewingFolder = folder;    
+         
+        if (folder === viewingFolder) {
+            viewingFolder = null;
+        } else {
+            viewingFolder = folder;       
+        }
         hideWorkbinItems();
     });    
 }
