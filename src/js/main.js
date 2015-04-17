@@ -43,7 +43,7 @@ function loadAnnouncementsList() {
             '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
             '<div class="right"><span class="pre-emailstime">' + announcement.time.toLocaleTimeString() + '</span>' +
             '<span class="middot">&middot;</span>' +
-            '<span class="pre-announcements-favourite '+ favouritedClass +'"></span>' +
+            '<span class="pre-announcements-favourite ' + favouritedClass + '"></span>' +
             '<span class="middot">&middot;</span>' +
             '<span class="pre-emails-dropdown"></span>' +
             '</div></div>' +
@@ -73,7 +73,7 @@ function getDateHeaderHtml(date) {
     } else if (date.toDateString() === yesterdayDate.toDateString() && !displayedHeaders[date.toDateString()]) {
         displayedHeaders[date.toDateString()] = true;
         value = "Yesterday";
-    } else if (!displayedHeaders[date.toDateString()]){
+    } else if (!displayedHeaders[date.toDateString()]) {
         displayedHeaders[date.toDateString()] = true;
         value = date.toDateString();
     }
