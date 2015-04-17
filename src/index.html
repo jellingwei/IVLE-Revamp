@@ -107,84 +107,80 @@
         <!-- <h4 class="category-header">Mailboxes</h4> -->
 
         <br></br>
-        
-        <nav class="categories">
-            <ul>
-                <li><span class="icon"></span><a href="#">Announcements</a><span class="counter">2</span></li>
-                <li><span class="icon"></span><a href="#">Workbin</a><span class="counter">6</span></li>
-            </ul>
-        </nav>
+            <nav class="categories">
+                <ul>
+                    <li class="active"><span class="icon"></span><a>Announcements</a><span id="announcements-counter" class="counter">2</span></li>
+                    <li><span class="icon"></span><a href="workbin.html">Workbin</a><span class="counter">6</span></li>
+                </ul>
+            </nav>
+            
+            <br></br>
+            
+            <h4 class="category-header">Modules</h4>
+            <nav class="categories category-modules">
+                <ul>
+                    <li  data-module="CS3217"><span class="icon"></span><a href="#">CS3217</a></li>
+                    <li data-module="CS2106"><span class="icon" ></span><a href="#">CS2106</a></li>
+                    <li data-module="CS3240"><span class="icon"></span><a href="#">CS3240</a></li>
+                    <li data-module="CS3230"><span class="icon"></span><a href="#">CS3230</a></li>
+                    <li data-module="LSM1303"><span class="icon" ></span><a href="#">LSM1303</a></li>
+                </ul>
+            </nav>
+            
+            <br></br>
+            <br></br>
+            <br></br>
 
-        <br></br>
-
-        <h4 class="category-header">Modules</h4>
-        <nav class="categories category-modules">
-            <ul>
-                <li  data-module="CS3217"><span class="icon"></span><a href="#">CS3217</a><span class="counter">6</span></li>
-                <li data-module="CS2106"><span class="icon" ></span><a href="#">CS2106</a></li>
-                <li data-module="CS3240"><span class="icon"></span><a href="#">CS3240</a></li>
-                <li data-module="CS3230"><span class="icon"></span><a href="#">CS3230</a><span class="counter">2</span></li>
-                <li data-module="LSM1303"><span class="icon" ></span><a href="#">LSM1303</a></li>
-            </ul>
-        </nav>
-
-        <br></br>
-        <br></br>
-        <br></br>
-
-        <nav class="categories">
-            <ul>
-                <li><span class="icon trash"></span><a href="#">Logout</a></li>
-            </ul>
-        </nav>
-    </aside>
-
-    <div class="container announcements-wrapper">
-        <aside class="emails">
-            <div class="email-options">
-                <div class="row">
-                    Show &middot; 
-                    <span class="filter-dropdown">
-                        <ul class="announcements-filters">
-                            <li>All</li>
-                            <li>Read</li>
-                            <li>Unread</li>
-                            <li>Favourites</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
-            <div class="pre-emails">
-            </div>
+            <nav class="categories">
+                <ul>
+                    <li><span class="icon trash"></span><a href="#">Logout</a></li>
+                 </ul>
+            </nav>
         </aside>
-        <section class="email-content">
-            <div class="email-title">
-                <div class="row">
-                    <h1 class="email-title-header">I taught my dog how to smile!</h1>
+
+        <div class="container announcements-wrapper">
+            <aside class="emails">
+                <div class="email-options">
+                    <div class="row">
+                        Show &middot; 
+                        <span class="filter-dropdown">
+                            <ul class="announcements-filters">
+                                <li id="announcements-filters-all">All</li>
+                                <li id="announcements-filters-read">Read</li>
+                                <li id="announcements-filters-unread">Unread</li>
+                                <li id="announcements-filters-favourites">Favourites</li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+                <div class="pre-emails">
+                </div>
+            </aside>
+            <section class="email-content">
+                <div class="email-title">
+                    <div class="row">
+                        <h1 class="email-title-header"></h1>
+                    </div>
+                </div>
+                <div class="email-from">
+                    <div class="row">
+                        <span class="email-from-time left"></span>
+                        <span class="announcement-favourite-icon icon pin right"></span>
+                    </div>
                 </div>
             </div>
             <div class="email-from">
                 <div class="row">
-                    <span class="email-from-time left">Today, 14:39</span>
-                    <span class="icon pin right"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="email-inside-content">
-                    <p>I gave Rusty a bone and he gave me a smile!</p>
-
-                    <p>I was so overwhelmed with joy I just had to take out my Canon 60D and snap the moment. I’m
-                        thinking
-                        about getting it framed, know of any places that do cheap frames?</p>
-
-                        <p>Let me know how things are with you!</p>
+                    <div class="email-inside-content">
+                        <p>Select an announcement to view.</p>
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
 
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+        <!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>-->
         <script type="text/javascript" src="js/moment.min.js"></script>
         <script type="text/javascript" src="js/vendor/jquery-1.10.1.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
