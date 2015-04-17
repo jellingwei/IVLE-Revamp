@@ -6,6 +6,7 @@ $(document).ready(function () {
     loadWorkbinList();
     loadAnnouncementsHandler();
     setClickHandlersOnSidebarItems();
+    hideFolders();
 });
 
 // menu
@@ -124,7 +125,11 @@ function setClickHandlersOnSidebarItems() {
         var modCode = $(this).data("module");
         
         viewingModule = modCode;
+        
+        viewingFolder = null;  // reset folder filter
+        
         hideWorkbinItems();
+        hideFolders();
     });
     
     $(".category-folders ul li").click(function () {
@@ -158,12 +163,57 @@ function hideWorkbinItems() {
                     } else if (viewingModule) {
                         return ($(this).hasClass(viewingModule) !== true);
                     } else if (viewingFolder) {
-                        return ($(this).hasClass(viewingFolder) !== true);
+                        return ($(this).hasClass(viewingFolder) !== true);  
                     } else {
-                        return false;   
+                        return false;
                     }
                     
                 });
         contentToHide.hide();   
 }
 
+
+function obtainWorkbinContentForModule(modCode) {
+    if (modCode) {
+        var moduleContent = workbinContent.filter(function(workbinItem) {
+            return (workbinItem.moduleCode === modCode);
+        });
+        return moduleContent;
+    } else {
+        return workbinContent;
+    }
+}
+
+function obtainFoldersForModule(modCode) {
+    var folders = obtainWorkbinContentForModule(modCode).map(function(workbinItem) {
+        return workbinItem.folder;    
+    });
+    
+    
+    // remove duplicates
+    folders = folders.filter(function (v, i, a) { 
+        return a.indexOf(v) == i 
+    });
+    
+    return folders;
+}
+
+
+function hideFolders() {
+    var folderNamesToShow = obtainFoldersForModule(viewingModule);
+    
+    var allFolders = obtainFoldersForModule();
+    var folderNamesToHide = allFolders.filter(function(folder) {
+        return folderNamesToShow.indexOf(folder) === -1;   
+    });
+    
+    var foldersToShow = $(".category-folders ul li").filter(function(folder) {
+        return folderNamesToShow.indexOf($(this).data("folder")) !== -1; 
+    });
+    var foldersToHide = $(".category-folders ul li").filter(function(folder) {
+        return folderNamesToHide.indexOf($(this).data("folder")) !== -1; 
+    });
+    
+    foldersToShow.show();
+    foldersToHide.hide();
+}

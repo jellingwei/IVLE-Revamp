@@ -39,5 +39,17 @@ var workbinContent = [
     content: "Read this before coming for lecture!",
 	time: new Date("April 07, 2015 3:39:00"),
 	downloaded: false,
+},
+       { 
+	moduleCode: "CS2106",
+	author: "Lubomir Bic",
+	title: "Tutorial 1.pdf",
+    folder: "Tutorial",
+	fileurl: "https://ivle.nus.edu.sg/workbin/file_download.aspx?workbinid=6bc8e24e-48fc-45d0-8d35-b603b6950fcb&dwFolderId=330f179c-bfbe-4dd2-97da-e099627d34cc&dwFileId=e8f342f3-e49f-4116-94f1-eaa3fcb4e51f",
+    content: "Do this before coming for the lesson!",
+	time: new Date("April 03, 2015 3:39:00"),
+	downloaded: false,
 }
 ];
+
+
