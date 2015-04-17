@@ -39,11 +39,13 @@ function loadAnnouncementsList(predicate) {
     for (var i = 0; i < announcements.length; i++) {
         var announcement = announcements[i];
         var favouritedClass = announcement.favourited ? "selected" : "";
+        var readClass = announcement.read ? "" : "unread";
 
         if (predicate == null || predicate(announcement)) {
             // TODO:
             announcementsContainer.append(getDateHeaderHtml(announcement.time));
-            var announcementHtml = '<div class="pre-emails-wrapper" data-announcement-id="' + announcement.id + '"><div class="pre-email-head">' +
+            var announcementHtml = '<div class="pre-emails-wrapper ' + readClass + '" data-announcement-id="' + announcement.id + '">' +
+                '<div class="pre-email-head">' +
                 '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
                 '<div class="right"><span class="pre-emailstime">' + getNiceTimeString(announcement.time) + '</span>' +
                 '<span class="middot">&middot;</span>' +
@@ -107,7 +109,7 @@ function getNiceDateString(date) {
     return value;
 }
 
-function getNiceTimeString(date){
+function getNiceTimeString(date) {
     var value;
     value = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
     value += ':';
@@ -122,6 +124,7 @@ function loadAnnouncementsHandler() {
     $('.pre-emails-wrapper').click(function () {
         $('.pre-emails-wrapper').removeClass('active');
         $(this).addClass('active');
+        $(this).removeClass('unread');
 
         //console.log($(this));
         var index = $(this).data('announcement-id');
