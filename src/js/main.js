@@ -94,13 +94,19 @@ function loadAnnouncementsHandler() {
 
         //console.log($(this));
         var index = $(this).data('announcement-id');
+        var announcement = announcements[index];
+        var favouritedClass = announcement.favourited ? "selected" : "";
+
         var announcementTitleHeader = $('.email-title-header');
         var announcementContent = $('.email-inside-content');
+        var announcementFavouriteIcon = $('.announcement-favourite-icon');
 
         announcementTitleHeader.html("");
-        announcementTitleHeader.append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
+        announcementTitleHeader.append("<b>" + announcement.moduleCode + ":</b> " + announcement.title);
+        announcementFavouriteIcon.html("");
+        announcementFavouriteIcon.append('<span class="pre-announcements-favourite ' + favouritedClass + '"></span>');
         announcementContent.html("");
-        announcementContent.append(announcements[index].content);
+        announcementContent.append(announcement.content);
     });
 }
 
