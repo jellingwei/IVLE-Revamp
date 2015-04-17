@@ -70,20 +70,31 @@ function getDateHeaderHtml(date) {
     var yesterdayDate = new Date();
     yesterdayDate.setDate(todayDate.getDate() - 1);
 
-    var value = "";
+    var value = date.toDateString();
     if (date.toDateString() === todayDate.toDateString() && !displayedHeaders[date.toDateString()]) {
         displayedHeaders[date.toDateString()] = true;
-        value = "Today";
+        value = "Today, " + value;
     } else if (date.toDateString() === yesterdayDate.toDateString() && !displayedHeaders[date.toDateString()]) {
         displayedHeaders[date.toDateString()] = true;
-        value = "Yesterday";
+        value = "Yesterday, " + value;
     } else if (!displayedHeaders[date.toDateString()]) {
         displayedHeaders[date.toDateString()] = true;
-        value = date.toDateString();
     }
-    if (value != "") {
-        return '<h3 class="pre-email-dates">' + value + '</h3>';
+    return '<h3 class="pre-email-dates">' + value + '</h3>';
+}
+
+function getNiceDateString(date) {
+    var todayDate = new Date();
+    var yesterdayDate = new Date();
+    yesterdayDate.setDate(todayDate.getDate() - 1);
+
+    var value = date.toDateString() + ' ' + date.toLocaleTimeString();
+    if (date.toDateString() === todayDate.toDateString()) {
+        value = 'Today, ' + value;
+    } else if (date.toDateString() === yesterdayDate.toDateString()) {
+        value = 'Yesterday, ' + value;
     }
+    return value;
 }
 
 // load announcements
@@ -99,13 +110,16 @@ function loadAnnouncementsHandler() {
 
         var announcementTitleHeader = $('.email-title-header');
         var announcementContent = $('.email-inside-content');
+        var announcementTime = $('.email-from-time');
         var announcementFavouriteIcon = $('.announcement-favourite-icon');
 
-        announcementTitleHeader.html("");
+        announcementTitleHeader.html('');
         announcementTitleHeader.append("<b>" + announcement.moduleCode + ":</b> " + announcement.title);
+        announcementTime.html('');
+        announcementTime.append(getNiceDateString(announcement.time));
         announcementFavouriteIcon.html("");
         announcementFavouriteIcon.append('<span class="pre-announcements-favourite ' + favouritedClass + '"></span>');
-        announcementContent.html("");
+        announcementContent.html('');
         announcementContent.append(announcement.content);
     });
 }
