@@ -94,11 +94,13 @@ function loadAnnouncementsHandler() {
 
         //console.log($(this));
         var index = $(this).data('announcement-id');
+        var announcementTitleHeader = $('.email-title-header');
+        var announcementContent = $('.email-inside-content');
 
-        $('.email-title-header').html("");
-        $('.email-title-header').append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
-        $('.email-inside-content').html("");
-        $('.email-inside-content').append(announcements[index].content);
+        announcementTitleHeader.html("");
+        announcementTitleHeader.append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
+        announcementContent.html("");
+        announcementContent.append(announcements[index].content);
     });
 }
 
