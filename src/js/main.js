@@ -5,6 +5,7 @@ $(document).ready(function () {
 
     loadAnnouncementsList();
     loadAnnouncementsHandler();
+    loadFavouriteButtons();
 });
 
 // menu
@@ -85,14 +86,22 @@ function loadAnnouncementsHandler() {
         $(".pre-emails-wrapper").removeClass('active');
         $(this).addClass('active');
 
-        //console.log($(this).data('announcement-id'));
+        //console.log($(this));
         var index = $(this).data('announcement-id');
 
         $(".email-title-header").html("");
         $(".email-title-header").append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
         $(".email-inside-content").html("");
         $(".email-inside-content").append(announcements[index].content);
+    });
+}
 
+// initialise favourite buttons
+function loadFavouriteButtons() {
+    var favouriteButtons = $(".pre-announcements-favourite");
+    favouriteButtons.click(function () {
+        $(this).toggleClass("selected");
+        console.log($(this).closest('.pre-email-wrapper'));
     });
 }
 
