@@ -46,10 +46,6 @@ function loadWorkbinList() {
             '<span class="pre-emails-name">' + content.moduleCode + '</span>' +
             '<span class="">&nbsp;&nbsp;&nbsp;&nbsp;' + content.folder + '</span>' +
             '<div class="right"><span class="pre-emailstime">' + content.time.toLocaleTimeString() + '</span>' +
-            '<span class="middot">&middot;</span>' +
-            '<span class="pre-emails-checkin"></span>' +
-            '<span class="middot">&middot;</span>' +
-            '<span class="pre-emails-dropdown"></span>' +
             '</div></div>' +
             '<div class="pre-email-body">' +
             '<a href ="' + content.fileurl + '">' +
