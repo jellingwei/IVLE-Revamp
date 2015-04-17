@@ -1,3 +1,5 @@
+var favouriteAnnouncements = [];
+
 $(document).ready(function () {
     $(".pre-emails").slimscroll({
         height: 'auto'
@@ -98,10 +100,11 @@ function loadAnnouncementsHandler() {
 
 // initialise favourite buttons
 function loadFavouriteButtons() {
-    var favouriteButtons = $(".pre-announcements-favourite");
+    var favouriteButtons = $('.pre-announcements-favourite');
     favouriteButtons.click(function () {
-        $(this).toggleClass("selected");
-        console.log($(this).closest('.pre-email-wrapper'));
+        $(this).toggleClass('selected');
+        var announcementId = $(this).parents('.pre-emails-wrapper').data('announcement-id');
+        favouriteAnnouncements[announcementId] = $(this).hasClass('selected');
     });
 }
 
