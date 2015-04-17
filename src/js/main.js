@@ -1,5 +1,3 @@
-var favouriteAnnouncements = [];
-
 $(document).ready(function () {
     $(".pre-emails").slimscroll({
         height: 'auto'
@@ -37,13 +35,15 @@ function loadAnnouncementsList() {
 
     for (var i = 0; i < announcements.length; i++) {
         var announcement = announcements[i];
+        var favouritedClass = announcement.favourited ? "selected" : "";
+
         // TODO:
         announcementsContainer.append(getDateHeaderHtml(announcement.time));
         var announcementHtml = '<div class="pre-emails-wrapper" data-announcement-id="' + i + '"><div class="pre-email-head">' +
             '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
             '<div class="right"><span class="pre-emailstime">' + announcement.time.toLocaleTimeString() + '</span>' +
             '<span class="middot">&middot;</span>' +
-            '<span class="pre-announcements-favourite"></span>' +
+            '<span class="pre-announcements-favourite '+ favouritedClass +'"></span>' +
             '<span class="middot">&middot;</span>' +
             '<span class="pre-emails-dropdown"></span>' +
             '</div></div>' +
@@ -104,7 +104,7 @@ function loadFavouriteButtons() {
     favouriteButtons.click(function () {
         $(this).toggleClass('selected');
         var announcementId = $(this).parents('.pre-emails-wrapper').data('announcement-id');
-        favouriteAnnouncements[announcementId] = $(this).hasClass('selected');
+        announcements[announcementId].favourited = $(this).hasClass('selected');
     });
 }
 
