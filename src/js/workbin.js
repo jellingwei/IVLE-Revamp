@@ -6,6 +6,7 @@ $(document).ready(function () {
     loadWorkbinList();
     loadAnnouncementsHandler();
     setClickHandlersOnSidebarItems();
+    hideFolders();
 });
 
 // menu
@@ -37,7 +38,7 @@ function loadWorkbinList() {
 
     var workbinContainer = $(".pre-emails");
     workbinContainer.html("");
-
+     sortWorkbinContentByDate();
     for (var i = 0; i < workbinContent.length; i++) {
         var content = workbinContent[i];
         
@@ -45,11 +46,7 @@ function loadWorkbinList() {
         var html = '<div class="workbinContent pre-emails-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '"><div class="pre-email-head">' +
             '<span class="pre-emails-name">' + content.moduleCode + '</span>' +
             '<span class="">&nbsp;&nbsp;&nbsp;&nbsp;' + content.folder + '</span>' +
-            '<div class="right"><span class="pre-emailstime">' + content.time.toLocaleTimeString() + '</span>' +
-            '<span class="middot">&middot;</span>' +
-            '<span class="pre-emails-checkin"></span>' +
-            '<span class="middot">&middot;</span>' +
-            '<span class="pre-emails-dropdown"></span>' +
+            '<div class="right"><span class="pre-emailstime">' + getNiceTimeString(content.time) + '</span>' +
             '</div></div>' +
             '<div class="pre-email-body">' +
             '<a href ="' + content.fileurl + '">' +
@@ -106,6 +103,17 @@ function loadAnnouncementsHandler() {
     });
 }
 
+// format time nicely
+function getNiceTimeString(date){
+    var value;
+    value = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+    value += ':';
+    value += date.getMinutes();
+    value += ' ';
+    value += date.getHours() >= 12 ? 'PM' : 'AM';
+    return value;
+}
+
 // view-modules content
 
 var viewingModule;
@@ -116,16 +124,27 @@ function setClickHandlersOnSidebarItems() {
         
         var modCode = $(this).data("module");
         
-        viewingModule = modCode;
+        if (modCode === viewingModule) {
+            viewingModule = null;
+        } else{
+            viewingModule = modCode;
+        }
+        
+        viewingFolder = null;  // reset folder filter
+        
         hideWorkbinItems();
+        hideFolders();
     });
     
     $(".category-folders ul li").click(function () {
          var folder = $(this).data("folder");
-        
-         viewingFolder = folder;    
+         
+        if (folder === viewingFolder) {
+            viewingFolder = null;
+        } else {
+            viewingFolder = folder;       
+        }
         hideWorkbinItems();
-
     });    
 }
 
@@ -152,9 +171,9 @@ function hideWorkbinItems() {
                     } else if (viewingModule) {
                         return ($(this).hasClass(viewingModule) !== true);
                     } else if (viewingFolder) {
-                        return ($(this).hasClass(viewingFolder) !== true);
+                        return ($(this).hasClass(viewingFolder) !== true);  
                     } else {
-                        return false;   
+                        return false;
                     }
                     
                 });
@@ -162,3 +181,54 @@ function hideWorkbinItems() {
 }
 
 
+function obtainWorkbinContentForModule(modCode) {
+    if (modCode) {
+        var moduleContent = workbinContent.filter(function(workbinItem) {
+            return (workbinItem.moduleCode === modCode);
+        });
+        return moduleContent;
+    } else {
+        return workbinContent;
+    }
+}
+
+function obtainFoldersForModule(modCode) {
+    var folders = obtainWorkbinContentForModule(modCode).map(function(workbinItem) {
+        return workbinItem.folder;    
+    });
+    
+    
+    // remove duplicates
+    folders = folders.filter(function (v, i, a) { 
+        return a.indexOf(v) == i 
+    });
+    
+    return folders;
+}
+
+
+function hideFolders() {
+    var folderNamesToShow = obtainFoldersForModule(viewingModule);
+    
+    var allFolders = obtainFoldersForModule();
+    var folderNamesToHide = allFolders.filter(function(folder) {
+        return folderNamesToShow.indexOf(folder) === -1;   
+    });
+    
+    var foldersToShow = $(".category-folders ul li").filter(function(folder) {
+        return folderNamesToShow.indexOf($(this).data("folder")) !== -1; 
+    });
+    var foldersToHide = $(".category-folders ul li").filter(function(folder) {
+        return folderNamesToHide.indexOf($(this).data("folder")) !== -1; 
+    });
+    
+    foldersToShow.show();
+    foldersToHide.hide();
+}
+
+function sortWorkbinContentByDate() {
+    workbinContent.sort(function(item1, item2) {
+        return item1.time < item2.time;
+    });
+    
+}
