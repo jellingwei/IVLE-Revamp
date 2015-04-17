@@ -22,72 +22,72 @@
     <body>
      <h1>The bootstrap modal experiment</h1>
 
-    <div class="reminder-icon" data-toggle="modal" data-target="#myModal">
+     <div class="reminder-icon" data-toggle="modal" data-target="#myModal">
 
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-       <div class="modal-content">
+     </div>
+     <!-- Modal -->
+     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
 
-        <div class="modal-header">
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-         <h4 class="modal-title reminders"><b>Remind me again...</b></h4>
-       </div>
-
-       <!-- Modal Content -->
-       <div class="modal-body">
-
-        <div class="container-fluid">
-          <div class="form-group">
-            <h4>at</h4>
-            <!-- Clock Picker -->
-            <div class="form-group">
-
-              <div class="input-group clockpicker col-md-3">
-                <input type="text" class="form-control reminders time-input">
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-time"></span>
-                </span>
-              </div>
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               <h4 class="modal-title reminders"><b>Remind me again...</b></h4>
             </div>
 
-            <div class="form-group">
-              <button type="button" class="btn btn-primary reminder-8am">8am</button>
-              <button type="button" class="btn btn-primary reminder-12pm">12pm</button>
-              <button type="button" class="btn btn-primary reminder-6pm">6pm</button>
-              <button type="button" class="btn btn-primary reminder-10pm">10pm</button>
+            <!-- Modal Content -->
+            <div class="modal-body">
+
+            <div class="container-fluid">
+                <div class="form-group">
+                  <h4>at</h4>
+                  <!-- Clock Picker -->
+                  <div class="form-group">
+
+                    <div class="input-group clockpicker col-md-3">
+                      <input type="text" class="form-control reminders time-input">
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button type="button" class="btn btn-primary reminder-8am">8am</button>
+                    <button type="button" class="btn btn-primary reminder-12pm">12pm</button>
+                    <button type="button" class="btn btn-primary reminder-6pm">6pm</button>
+                    <button type="button" class="btn btn-primary reminder-10pm">10pm</button>
+                  </div>
+
+
+                  <!-- Calendar -->
+                  <div class="form-group">
+                    <h4>on</h4>
+                    <div class='input-group date col-md-5' id='datetimepicker'>
+                      <input type='text' class="form-control reminders date-input"/>
+                      <span class="input-group-addon">
+                       <span class="glyphicon glyphicon-calendar"></span>
+                     </span>
+                   </div>             
+                 </div>
+
+                 <button type="button" class="btn btn-primary reminder-today">Today</button>
+                 <button type="button" class="btn btn-primary reminder-tomorrow">Tomorrow</button>
+                 <button type="button" class="btn btn-primary reminder-nextWeek">next week</button>
+                 <button type="button" class="btn btn-primary reminder-nextMonth">next month</button>
+
+                </div>
+            </div>
             </div>
 
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+               <button type="button" class="btn btn-primary reminder-save">Save changes</button>
+            </div>
 
-            <!-- Calendar -->
-            <div class="form-group">
-              <h4>on</h4>
-              <div class='input-group date col-md-5' id='datetimepicker'>
-                <input type='text' class="form-control reminders date-input"/>
-                <span class="input-group-addon">
-                 <span class="glyphicon glyphicon-calendar"></span>
-               </span>
-             </div>             
-           </div>
-
-           <button type="button" class="btn btn-primary reminder-today">Today</button>
-           <button type="button" class="btn btn-primary reminder-tomorrow">Tomorrow</button>
-           <button type="button" class="btn btn-primary reminder-nextWeek">next week</button>
-           <button type="button" class="btn btn-primary reminder-nextMonth">next month</button>
-
-         </div>
-       </div>
-     </div>
-
-     <div class="modal-footer">
-       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-       <button type="button" class="btn btn-primary reminder-save">Save changes</button>
-     </div>
-
-   </div>
- </div>
-</div>
+          </div>
+        </div>
+      </div>
 
 
 <script type="text/javascript" src="js/moment.min.js"></script>

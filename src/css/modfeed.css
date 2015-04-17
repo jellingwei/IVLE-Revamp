@@ -1,3 +1,11 @@
+.container {
+    padding: 0px;
+}
+
+.row {
+    margin: 0px;
+    padding: 0 20px;
+}
 .truncate {
     display:inline-block;
     width: 250px;
@@ -48,17 +56,25 @@
     width: 17px;
 }
 
+.pre-announcements-reminder,
 .reminder-icon {
-    background: url('../img/reminder-icon.png');
-    height: 30px;
-    width: 30px;
+    display: inline-block;
+    background: url('../img/reminder-icon.png') ;
+    background-size: 20px;
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
     cursor: pointer;
 }
 
+.pre-announcements-reminder:hover,
+.pre-announcements-reminder.selected,
 .reminder-icon:hover,
 .reminder-icon.selected {
     background: url('../img/reminder-icon-selected.png');
-    height: 30px;
-    width: 30px;
+    background-size: 20px;
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
     cursor: pointer;
 }

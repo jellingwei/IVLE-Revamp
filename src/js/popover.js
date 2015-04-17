@@ -1,14 +1,3 @@
-moment.locale('en', {
-    calendar : {
-        lastDay : '[Yesterday]',
-        sameDay : '[Today]',
-        nextDay : '[Tomorrow]',
-        lastWeek : '[last] dddd [at] LT',
-        nextWeek : '[Next Week]',
-        sameElse : 'L'
-    }
-});
-
 $('.clockpicker').clockpicker({
 	placement: 'bottom',
     align: 'left',
