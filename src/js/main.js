@@ -29,7 +29,6 @@ $(".close-menu").click(function () {
 
 });
 
-
 function isAnnouncementOfViewingModule(modCode) {
     if (viewingModule) {
         return viewingModule === modCode;   
@@ -147,7 +146,6 @@ function loadAnnouncementsHandler() {
             unreadAnnouncementCount--;
             updateAnnouncementCounter();
         }
-
         var announcementTitleHeader = $('.email-title-header');
         var announcementContent = $('.email-inside-content');
         var announcementTime = $('.email-from-time');
@@ -161,6 +159,8 @@ function loadAnnouncementsHandler() {
         announcementFavouriteIcon.append('<span class="pre-announcements-favourite ' + favouritedClass + '"></span>');
         announcementContent.html('');
         announcementContent.append(announcement.content);
+
+        //console.log(announcement.content);
     });
 }
 
@@ -289,7 +289,7 @@ function setClickHandlersOnSidebarItems() {
         var modCode = $(this).data("module");
         
         viewingModule = modCode;
-        
+
         hideAnnouncements();
     });
     
@@ -314,6 +314,7 @@ function hideAnnouncements() {
                         return ($(this).hasClass(viewingModule) !== true);
 
                 });
+
         contentToHide.hide();   
-    
+
 }

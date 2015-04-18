@@ -4,7 +4,7 @@ $(document).ready(function () {
     });
 
     loadWorkbinList();
-    loadAnnouncementsHandler();
+    // loadAnnouncementsHandler();
     setClickHandlersOnSidebarItems();
     hideFolders();
 });
@@ -88,20 +88,20 @@ function getDateHeaderHtml(date) {
 }
 
 // load announcements
-function loadAnnouncementsHandler() {
-    $(".pre-emails-wrapper").click(function () {
-        $(".pre-emails-wrapper").removeClass('active');
-        $(this).addClass('active');
+// function loadAnnouncementsHandler() {
+//     $(".pre-emails-wrapper").click(function () {
+//         $(".pre-emails-wrapper").removeClass('active');
+//         $(this).addClass('active');
 
-        var index = $(this).data('announcement-id');
+//         var index = $(this).data('announcement-id');
 
-        $(".email-title-header").html("");
-        $(".email-title-header").append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
-        $(".email-inside-content").html("");
-        $(".email-inside-content").append(announcements[index].content);
+//         $(".email-title-header").html("");
+//         $(".email-title-header").append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
+//         $(".email-inside-content").html("");
+//         $(".email-inside-content").append(announcements[index].content);
 
-    });
-}
+//     });
+// }
 
 // format time nicely
 function getNiceTimeString(date){
@@ -180,7 +180,6 @@ function hideWorkbinItems() {
         contentToHide.hide();   
 }
 
-
 function obtainWorkbinContentForModule(modCode) {
     if (modCode) {
         var moduleContent = workbinContent.filter(function(workbinItem) {
@@ -230,5 +229,5 @@ function sortWorkbinContentByDate() {
     workbinContent.sort(function(item1, item2) {
         return item1.time < item2.time;
     });
-    
+
 }
