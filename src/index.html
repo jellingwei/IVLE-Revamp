@@ -17,9 +17,13 @@
         <meta name="description" content="">
         <meta name="viewport" content="initial-scale=1.0,width=device-width">
 
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="dist/bootstrap-clockpicker.min.css">
+        <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
         <link rel="stylesheet" type="text/css" href="css/normalize.min.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" type="text/css" href="css/modfeed.css">
+        <link rel="stylesheet" type="text/css" href="css/workbin.css">
 
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,17 +34,80 @@
 </head>
 <body>
 
-    <div class="container">
-        <aside class="menu">
-            <div class="min-max">
-                <div class="row">
-                    <img src="img/close-menu.png" class="close-menu" alt="Close Menu"/>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               <h4 class="modal-title reminders"><b>Remind me again...</b></h4>
+           </div>
+
+           <!-- Modal Content -->
+           <div class="modal-body">
+
+            <div class="container-fluid">
+                <div class="form-group">
+                  <h4>at</h4>
+                  <!-- Clock Picker -->
+                  <div class="form-group">
+
+                    <div class="input-group clockpicker col-md-3">
+                      <input type="text" class="form-control reminders time-input">
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
                 </div>
             </div>
-            <!-- <h4 class="category-header">Mailboxes</h4> -->
-            
-            <br></br>
-        
+
+            <div class="form-group">
+                <button type="button" class="btn btn-primary reminder-8am">8am</button>
+                <button type="button" class="btn btn-primary reminder-12pm">12pm</button>
+                <button type="button" class="btn btn-primary reminder-6pm">6pm</button>
+                <button type="button" class="btn btn-primary reminder-10pm">10pm</button>
+            </div>
+
+
+            <!-- Calendar -->
+            <div class="form-group">
+                <h4>on</h4>
+                <div class='input-group date col-md-5' id='datetimepicker'>
+                  <input type='text' class="form-control reminders date-input"/>
+                  <span class="input-group-addon">
+                   <span class="glyphicon glyphicon-calendar"></span>
+               </span>
+           </div>             
+       </div>
+
+       <button type="button" class="btn btn-primary reminder-today">Today</button>
+       <button type="button" class="btn btn-primary reminder-tomorrow">Tomorrow</button>
+       <button type="button" class="btn btn-primary reminder-nextWeek">next week</button>
+       <button type="button" class="btn btn-primary reminder-nextMonth">next month</button>
+
+   </div>
+</div>
+</div>
+
+<div class="modal-footer">
+   <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+   <button type="button" class="btn btn-primary reminder-save">Save changes</button>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="container">
+    <aside class="menu">
+        <div class="min-max">
+            <div class="row">
+                <img src="img/close-menu.png" class="close-menu" alt="Close Menu"/>
+            </div>
+        </div>
+        <!-- <h4 class="category-header">Mailboxes</h4> -->
+
+        <br></br>
             <nav class="categories">
                 <ul>
                     <li class="active"><span class="icon"></span><a>Announcements</a><span id="announcements-counter" class="counter">2</span></li>
@@ -53,11 +120,11 @@
             <h4 class="category-header">Modules</h4>
             <nav class="categories category-modules">
                 <ul>
-                    <li  data-module="CS3217"><span class="icon"></span><a href="#">CS3217</a><span class="counter">6</span></li>
-                    <li data-module="CS2106"><span class="icon" ></span><a href="#">CS2106</a></li>
-                    <li data-module="CS3240"><span class="icon"></span><a href="#">CS3240</a></li>
-                    <li data-module="CS3230"><span class="icon"></span><a href="#">CS3230</a><span class="counter">2</span></li>
-                    <li data-module="LSM1303"><span class="icon" ></span><a href="#">LSM1303</a></li>
+                    <li  data-module="CS3217"><span class="icon folder"></span><a href="#">CS3217</a></li>
+                    <li data-module="CS2106"><span class="icon folder" ></span><a href="#">CS2106</a></li>
+                    <li data-module="CS3240"><span class="icon folder"></span><a href="#">CS3240</a></li>
+                    <li data-module="CS3230"><span class="icon folder"></span><a href="#">CS3230</a></li>
+                    <li data-module="LSM1303"><span class="icon folder" ></span><a href="#">LSM1303</a></li>
                 </ul>
             </nav>
             
@@ -105,19 +172,24 @@
                 <div class="row">
                     <div class="email-inside-content">
                         <p>Select an announcement to view.</p>
-                        </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
+        </div>
 
-            <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
-            <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-            <script src="js/vendor/jquery-ui.js"></script>
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
+        <!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>-->
+        <script type="text/javascript" src="js/moment.min.js"></script>
+        <script type="text/javascript" src="js/vendor/jquery-1.10.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="dist/bootstrap-clockpicker.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+        <script src="js/vendor/jquery-ui.js"></script>
 
-            <script src="js/vendor/jquery.slimscroll.min.js"></script>
+        <script src="js/vendor/jquery.slimscroll.min.js"></script>
 
-            <script src="js/plugins.js"></script>
-            <script src="js/main.js"></script>
-            <script src="js/dummyAnnouncements.js"></script>
-        </body>
-        </html>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/dummyAnnouncements.js"></script>
+    </body>
+    </html>

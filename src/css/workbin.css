@@ -393,7 +393,7 @@ html, body, section,
 /* *** Email Content *** */
 .email-content {
     border-left: 1px solid #c9c4d2;
-    width: 75%;
+    width: 70%;
     overflow: auto;
 }
 

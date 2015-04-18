@@ -29,6 +29,13 @@ $(".close-menu").click(function () {
 
 });
 
+function isAnnouncementOfViewingModule(modCode) {
+    if (viewingModule) {
+        return viewingModule === modCode;   
+    }
+    return true;
+}
+
 // pre-emails
 var unreadAnnouncementCount = 0;
 function loadAnnouncementsList(predicate) {
@@ -43,7 +50,7 @@ function loadAnnouncementsList(predicate) {
         var readClass = announcement.read ? "" : "unread";
         var modCode = announcement.moduleCode;
 
-        if (predicate == null || predicate(announcement)) {
+        if (predicate == null || (predicate(announcement) && isAnnouncementOfViewingModule(modCode)) ) {
             // TODO:
             announcementsContainer.append(getDateHeaderHtml(announcement.time));
             var announcementHtml = '<div class="pre-emails-wrapper ' + readClass + ' ' + modCode + ' announcement" data-announcement-id="' + announcement.id + '">' +
@@ -53,7 +60,7 @@ function loadAnnouncementsList(predicate) {
                 '<span class="middot">&middot;</span>' +
                 '<span class="pre-announcements-favourite ' + favouritedClass + '"></span>' +
                 '<span class="middot">&middot;</span>' +
-                '<span class="pre-emails-dropdown"></span>' +
+                '<span class="pre-announcements-reminder" data-toggle="modal" data-target="#myModal"></span>' +
                 '</div></div>' +
                 '<div class="pre-email-body">' +
                 '<h4 class="pre-email-h4">' + announcement.title + '</h4>' +
@@ -202,9 +209,75 @@ function loadFavouriteButtons() {
         announcements[announcementId].favourited = $(this).hasClass('selected');
     });
 }
+// reminder buttons
+// clock
+$('.clockpicker').clockpicker({
+    placement: 'bottom',
+    align: 'left',
+    donetext: 'Done',
+    'default': 'now',
+    autoclose: true
+
+});
+
+
+$('.reminder-8am').click(function() {
+    $('.reminders.time-input').val('08:00');
+});
+
+$('.reminder-12pm').click(function() {
+    $('.reminders.time-input').val('12:00');
+});
+
+$('.reminder-6pm').click(function() {
+    $('.reminders.time-input').val('18:00');
+});
+
+$('.reminder-10pm').click(function() {
+    $('.reminders.time-input').val('22:00');
+});
+
+$('.reminders.time-input').val(moment().format('hh:mm'));
+
+// calendar
+$('#datetimepicker').datetimepicker({
+     format: 'DD/MM/YYYY'
+});
+
+$('.reminder-today').click(function() { 
+    $('.reminders.date-input').val(moment().format('DD/MM/YYYY'));
+
+});
+
+var tomorrow = moment().add(1, 'days');
+$('.reminder-tomorrow').click(function() {  
+    $('.reminders.date-input').val(tomorrow.format('DD/MM/YYYY'));
+
+});
+
+var nextWeek = moment().add(1, 'weeks');
+$('.reminder-nextWeek').click(function() {
+    $('.reminders.date-input').val(nextWeek.format('DD/MM/YYYY'));
+});
+
+var nextMonth = moment().add(1, 'months');
+$('.reminder-nextMonth').click(function() {
+    $('.reminders.date-input').val(nextMonth.format('DD/MM/YYYY'));
+});
+
+$('.reminders.date-input').val(moment().format('DD/MM/YYYY'));
+
+// save changes
+$('.reminder-save').click(function() {
+    console.log("saved:");
+    console.log($('.reminders.date-input').val());
+    console.log($('.reminders.time-input').val());
+    $('.modal-body').html("");
+    $('.modal-body').append("<h4>Reminder added</h4>")
+    $('.modal-footer').html("");
+})
 
 // view-email
-
 
 var viewingModule;
 
@@ -215,6 +288,7 @@ function setClickHandlersOnSidebarItems() {
         var modCode = $(this).data("module");
         
         viewingModule = modCode;
+
         hideAnnouncements();
     });
     
@@ -239,6 +313,5 @@ function hideAnnouncements() {
                         return ($(this).hasClass(viewingModule) !== true);
 
                 });
-        contentToHide.hide();   
-    
+        contentToHide.hide();
 }
