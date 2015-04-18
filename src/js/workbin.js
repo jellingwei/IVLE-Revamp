@@ -180,7 +180,6 @@ function hideWorkbinItems() {
         contentToHide.hide();   
 }
 
-
 function obtainWorkbinContentForModule(modCode) {
     if (modCode) {
         var moduleContent = workbinContent.filter(function(workbinItem) {
@@ -230,5 +229,4 @@ function sortWorkbinContentByDate() {
     workbinContent.sort(function(item1, item2) {
         return item1.time < item2.time;
     });
-    
 }

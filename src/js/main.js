@@ -29,7 +29,6 @@ $(".close-menu").click(function () {
 
 });
 
-
 function isAnnouncementOfViewingModule(modCode) {
     if (viewingModule) {
         return viewingModule === modCode;   
@@ -44,7 +43,6 @@ function loadAnnouncementsList(predicate) {
     announcementsContainer.html("");
     displayedHeaders = [];
     unreadAnnouncementCount = 0;
-    
 
     for (var i = 0; i < announcements.length; i++) {
         var announcement = announcements[i];
@@ -244,7 +242,7 @@ $('.reminders.time-input').val(moment().format('hh:mm'));
 // calendar
 $('#datetimepicker').datetimepicker({
      format: 'DD/MM/YYYY'
-})
+});
 
 $('.reminder-today').click(function() { 
     $('.reminders.date-input').val(moment().format('DD/MM/YYYY'));
@@ -280,6 +278,7 @@ $('.reminder-save').click(function() {
 })
 
 // view-email
+
 var viewingModule;
 
 
@@ -289,7 +288,7 @@ function setClickHandlersOnSidebarItems() {
         var modCode = $(this).data("module");
         
         viewingModule = modCode;
-        
+
         hideAnnouncements();
     });
     
@@ -314,6 +313,5 @@ function hideAnnouncements() {
                         return ($(this).hasClass(viewingModule) !== true);
 
                 });
-        contentToHide.hide();   
-    
+        contentToHide.hide();
 }
