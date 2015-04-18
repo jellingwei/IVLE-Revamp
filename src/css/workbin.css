@@ -43,7 +43,7 @@ body {
 }
 
 ::selection {
-    background: #b3d4fc;
+    background: #52b4af;
     text-shadow: none;
 }
 
@@ -152,7 +152,7 @@ html, body, section,
 .menu {
     width: 15%;
     /*border: 1px solid #252329;*/
-    background: #34313A;
+    background: #25242c ;
     overflow: auto;
 }
 
@@ -180,7 +180,7 @@ html, body, section,
     padding-left: 20px;
     height: 35px;
     background: #3b3842;
-    color: #625b6c;
+    color: #c3dae3 ;
     text-transform: uppercase;
     font-weight: normal;
     font-size: 13px;
@@ -188,7 +188,7 @@ html, body, section,
 }
 
 .categories {
-    color: #959595;
+    color: #4d505b ;
     font-size: 13px;
 }
 
@@ -279,7 +279,7 @@ html, body, section,
 }
 
 .pre-email-dates {
-    background: #e3dfe8;
+    background: #dddad6;
     border-top: 1px solid #c9c4d2;
     border-bottom: 1px solid #c9c4d2;
     color: #6e6b74;
@@ -309,7 +309,7 @@ html, body, section,
     background: -webkit-linear-gradient(top,  #5b83c3 0%,#527cbe 100%);
     background: -o-linear-gradient(top,  #5b83c3 0%,#527cbe 100%);
     background: -ms-linear-gradient(top,  #5b83c3 0%,#527cbe 100%);
-    background: linear-gradient(to bottom,  #5b83c3 0%,#527cbe 100%);
+    background: linear-gradient(to bottom,  #52b4af 0%,#527cbe 100%);
     box-shadow: 0 0 1px #4570b7;
     color: #ffffff;
     text-shadow: 2px 2px 0 rgba(0,0,0,0.11);
