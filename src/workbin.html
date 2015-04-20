@@ -103,10 +103,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="email-inside-content">
-                        <p>No preview!</p>
+                    <div id="previewLoading" class="email-inside-content">
+                        <p>Preview is loading</p>
                     </div>
-                </div>
+                    <div id="viewerContainer">
+                        <div id="previewViewer" class="pdfViewer">
+                            <canvas id="previewPage1" width="1019" height="1319" style="width: 1019px; height: 1319px;"></canvas>
+                        </div>
+                    </div>
             </section>
         </div>
     </div>
@@ -114,11 +118,12 @@
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
+    <script src="dist/pdf.js"></script></script>
     <script src="js/vendor/jquery.slimscroll.min.js"></script>
 
     <script src="js/plugins.js"></script>
     <script src="js/workbin.js"></script>
     <script src="js/dummyWorkbinContent.js"></script>
+    
 </body>
 </html>

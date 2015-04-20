@@ -38,12 +38,12 @@ function loadWorkbinList() {
 
     var workbinContainer = $(".pre-emails");
     workbinContainer.html("");
-     sortWorkbinContentByDate();
+    sortWorkbinContentByDate();
     for (var i = 0; i < workbinContent.length; i++) {
         var content = workbinContent[i];
         
         workbinContainer.append(getDateHeaderHtml(content.time));
-        var html = '<div class="workbinContent pre-emails-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '"><div class="pre-email-head">' +
+        var html = '<div class="workbinContent pre-emails-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '" onclick="showPreview(\'' + content.fileurl + '\')"><div class="pre-email-head">' +
             '<span class="pre-emails-name">' + content.moduleCode + '</span>' +
             '<span class="">&nbsp;&nbsp;&nbsp;&nbsp;' + content.folder + '</span>' +
             '<div class="right"><span class="pre-emailstime">' + getNiceTimeString(content.time) + '</span>' +
@@ -149,7 +149,7 @@ function setClickHandlersOnSidebarItems() {
 }
 
 function hideWorkbinItems() {
-     var contentToShow = 
+    var contentToShow = 
                $(".workbinContent").filter(function(val) {
                     if (viewingModule && viewingFolder) {
                         return ($(this).hasClass(viewingFolder) && $(this).hasClass(viewingModule));
@@ -162,9 +162,9 @@ function hideWorkbinItems() {
                     }
                     
                 });
-        contentToShow.show();
+    contentToShow.show();
         
-        var contentToHide = 
+    var contentToHide = 
               $(".workbinContent").filter(function(val) {
                     if (viewingModule && viewingFolder) {
                         return ($(this).hasClass(viewingFolder) !== true || $(this).hasClass(viewingModule) !== true);
@@ -177,7 +177,7 @@ function hideWorkbinItems() {
                     }
                     
                 });
-        contentToHide.hide();   
+    contentToHide.hide();   
 }
 
 function obtainWorkbinContentForModule(modCode) {
@@ -227,7 +227,30 @@ function hideFolders() {
 
 function sortWorkbinContentByDate() {
     workbinContent.sort(function(item1, item2) {
-        return item1.time < item2.time;
+        return new Date(item2.time) - new Date(item1.time);
     });
 
+}
+
+function showPreview(fileUrl) {
+    PDFJS.getDocument(fileUrl).then(function(pdf) {
+      $("#previewLoading").show();
+      pdf.getPage(1).then(function(page) {
+          $("#previewLoading").hide();
+            var scale = 1.5;
+            var viewport = page.getViewport(scale);
+
+            var canvas = document.getElementById('previewPage1');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport
+            };
+            page.render(renderContext);
+      });
+
+    });
 }
