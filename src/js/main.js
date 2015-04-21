@@ -211,6 +211,14 @@ function loadFavouriteButtons() {
         announcements[announcementId].favourited = $(this).hasClass('selected');
     });
 }
+
+function loadActionButtons() {
+    var alertFriendsButton = $('.alert-friend');
+    alertFriendsButton.click(function() {
+        
+    });
+}
+
 // reminder buttons
 // clock
 $('.clockpicker').clockpicker({

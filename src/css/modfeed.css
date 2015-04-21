@@ -115,3 +115,8 @@
     /*background-color: #d0d0d0;*/
     font-weight: bolder;
 }
+
+.email-inside-bottom > img {
+    height: 50px;
+    width: 50px;
+}
