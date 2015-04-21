@@ -7,6 +7,7 @@ $(document).ready(function () {
     loadAnnouncementsHandler();
     loadFilters();
     loadFavouriteButtons();
+    loadActionButtons();
     setClickHandlersOnSidebarItems();
 });
 
