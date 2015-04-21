@@ -312,4 +312,3 @@ function hideDatesWithoutContent() {
 $("#submissionsUpload").dropzone({ url: "/fake/path",
                                     dictDefaultMessage: "Drag and drop files here for submission",
                                     dictResponseError: "Upload succeeded" }); // give success message for failure, since prototype
->>>>>>> Stashed changes
