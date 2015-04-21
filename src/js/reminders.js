@@ -122,6 +122,9 @@ function saveChanges(index) {
 	// console.log(announcements[index]);
 
 	var announcementTitle = announcements[index].moduleCode + ": " + announcements[index].title;
+	if (announcements[index].files != "") {
+		announcementTitle += " Click here to download file.";
+	}
 	setAlarm(index, reminderTime, announcementTitle);
 
 	// hide modal after 700ms
@@ -129,6 +132,7 @@ function saveChanges(index) {
 
 }
 
+// from Mozilla developers
 function setAlarm(index, reminderTime, announcementTitle) {
 	var timeDiff = reminderTime - new Date();
 	clearTimeout(announcements[index].remindInstance);
@@ -164,7 +168,8 @@ function show(index, announcementTitle) {
 	);
 
 	instance.onclick = function () {
-		console.log("click? o,o");
+		// TODO: somehow not working
+		location = location.href;
 	};
 
 	instance.onerror = function () {

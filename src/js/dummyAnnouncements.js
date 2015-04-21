@@ -6,7 +6,7 @@ var announcements = [
 	author: "Lubomir Bic",
 	title: "Last lecture on Fri April 17",
 	content: "The original plan was to discuss the last homework (HW12) during the last lecture slot (since there are no more tutorials next week).<br>	However, Prof. Tan has a different lacture planned for that date.<br>Hence I will post the solutions for HW12 after the dure date. Feel free to email me of you have any quesitons about them.<br>--LB",
-	files: "",
+	files: "lecture-13.pdf",
 	time: new Date("April 13, 2015 4:33:00"),
 	read: false,
 	favourited: 0,
