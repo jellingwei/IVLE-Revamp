@@ -117,24 +117,14 @@ a:hover {color: #6e6a74;}
      background: url('../img/submission.gif') no-repeat;
 }
 
-.icon.color {
-    background-image: none;
-    border-radius: 3px;
+.icon.download {
+     background: url('../img/download.png') no-repeat;
+    background-size: 20px;
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+    cursor: pointer;
 }
-.icon.color.red {
-    background-color: #f1614f;
-}
-.icon.color.blue {
-    background-color: #3fbad4;
-}
-.icon.color.green {
-    background-color: #50ae47;
-}
-.icon.color.yellow {
-    background-color: #e8b144;
-}
-
-
 /* *** Email App *** */
 
 html, body, section,

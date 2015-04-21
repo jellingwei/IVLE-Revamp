@@ -49,7 +49,6 @@ function loadWorkbinList() {
             '<div class="right"><span class="pre-emailstime">' + getNiceTimeString(content.time) + '</span>' +
             '</div></div>' +
             '<div class="pre-email-body">' +
-            '<a href ="' + content.fileurl + '">' +
             '<h4 class="pre-email-h4">' + content.title + '</h4>' +
             '</a>';
         if (content.content) {
@@ -86,6 +85,8 @@ function getDateHeaderHtml(date) {
         return '<h3 class="pre-email-dates">' + value + '</h3>';
     }
 }
+
+
 
 // load announcements
 // function loadAnnouncementsHandler() {
@@ -146,37 +147,41 @@ function setClickHandlersOnSidebarItems() {
         }
         hideWorkbinItems();
     });    
+    
+     $(".download").click(function () {
+         
+      }); 
 }
 
 function hideWorkbinItems() {
     var contentToShow = 
-               $(".workbinContent").filter(function(val) {
-                    if (viewingModule && viewingFolder) {
-                        return ($(this).hasClass(viewingFolder) && $(this).hasClass(viewingModule));
-                    } else if (viewingModule) {
-                        return ($(this).hasClass(viewingModule));
-                    } else if (viewingFolder) {
-                        return ($(this).hasClass(viewingFolder));
-                    } else {
-                        return true;   
-                    }
-                    
-                });
+       $(".workbinContent").filter(function(val) {
+            if (viewingModule && viewingFolder) {
+                return ($(this).hasClass(viewingFolder) && $(this).hasClass(viewingModule));
+            } else if (viewingModule) {
+                return ($(this).hasClass(viewingModule));
+            } else if (viewingFolder) {
+                return ($(this).hasClass(viewingFolder));
+            } else {
+                return true;   
+            }
+
+        });
     contentToShow.show();
         
     var contentToHide = 
-              $(".workbinContent").filter(function(val) {
-                    if (viewingModule && viewingFolder) {
-                        return ($(this).hasClass(viewingFolder) !== true || $(this).hasClass(viewingModule) !== true);
-                    } else if (viewingModule) {
-                        return ($(this).hasClass(viewingModule) !== true);
-                    } else if (viewingFolder) {
-                        return ($(this).hasClass(viewingFolder) !== true);  
-                    } else {
-                        return false;
-                    }
-                    
-                });
+      $(".workbinContent").filter(function(val) {
+            if (viewingModule && viewingFolder) {
+                return ($(this).hasClass(viewingFolder) !== true || $(this).hasClass(viewingModule) !== true);
+            } else if (viewingModule) {
+                return ($(this).hasClass(viewingModule) !== true);
+            } else if (viewingFolder) {
+                return ($(this).hasClass(viewingFolder) !== true);  
+            } else {
+                return false;
+            }
+
+        });
     contentToHide.hide();   
 }
 
