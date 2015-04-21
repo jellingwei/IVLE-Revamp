@@ -117,3 +117,8 @@
 .reminder-added-msg {
     display: none;
 }
+
+.modal-footer .btn-danger {
+    float: left;
+    display: none;
+}

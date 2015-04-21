@@ -69,7 +69,7 @@ $('#reminderModal').on('show.bs.modal', function (e) {
 	$('.modal-title').append(announcements[index].title);
 	// create form
 	$('.modal-body .container-fluid').show();
-	$('.modal-body .reminder-added-msg').hide();
+	$('.modal-body .reminder-saved-msg').hide();
 	$('.modal-footer').show();
 	
 	if (announcements[index].remindOn == null) {
@@ -77,14 +77,24 @@ $('#reminderModal').on('show.bs.modal', function (e) {
 		$('.reminders.time-input').val(moment().add(1, 'hours').format('HH:mm'));
 		$('.reminders.date-input').val(moment().format('DD/MM/YYYY'));
 
+		$('.modal-footer .btn-danger').hide();
 		$('.modal-footer .btn-default').html("Cancel");
 
 	} else {
-		$('.reminder-heading').append("Edit a reminder: <br><h4></h4>");
+		$('.reminder-heading').append("Edit existing reminder: <br><h4></h4>");
 		$('.reminders.time-input').val(moment(announcements[index].remindOn).format('HH:mm'));
 		$('.reminders.date-input').val(moment(announcements[index].remindOn).format('DD/MM/YYYY'));
 
+		$('.modal-footer .btn-danger').show();
 		$('.modal-footer .btn-default').html("Discard Changes");
+		$('.modal-footer .btn-primary').html("Save Changes");
+
+		$('.reminder-delete').click(function() {
+			announcements[index].remindOn = null;
+			// console.log(announcements[index]);
+			// TODO: remove timeOut
+			($invoker).removeClass("selected");
+		})
 
 	}
 
@@ -100,20 +110,18 @@ function saveChanges(id) {
 	var reminderTimeStr = moment($('.reminders.date-input').val(), 'DD/MM/YYYY').format('MMMM D, YYYY');
 	reminderTimeStr += " " + $('.reminders.time-input').val() + ":00";
 
-	// console.log("reminderTimeStr: " + reminderTimeStr);
 	var reminderTime = new Date(reminderTimeStr);
-	// console.log("reminderTime: " + reminderTime);
 
 	announcements[id].remindOn = reminderTime;
-	console.log(announcements[id]);
+	// console.log(announcements[id]);
 
-
+	// TODO: set timeout
 
 	$('.modal-body .container-fluid').hide();
-	$('.modal-body .reminder-added-msg').show();
+	$('.modal-body .reminder-saved-msg').show();
 	$('.modal-footer').hide();
 
 	// hide modal after 1s
-	setTimeout(function() {$('#reminderModal').modal('hide');}, 1000);
+	setTimeout(function() {$('#reminderModal').modal('hide');}, 700);
 
 }
