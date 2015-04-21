@@ -43,13 +43,15 @@ function loadWorkbinList() {
         var content = workbinContent[i];
         
         workbinContainer.append(getDateHeaderHtml(content.time));
+
         var html = '<div class="workbinContent pre-emails-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '" onclick="showPreview(\'' + content.fileurl + '\')"><div class="pre-email-head">' +
             '<span class="pre-emails-name">' + content.moduleCode + '</span>' +
             '<span class="">&nbsp;&nbsp;&nbsp;&nbsp;' + content.folder + '</span>' +
             '<div class="right"><span class="pre-emailstime">' + getNiceTimeString(content.time) + '</span>' +
             '</div></div>' +
-            '<div class="pre-email-body">' +
-            '<h4 class="pre-email-h4">' + content.title + '</h4>' +
+            '<div class="pre-email-body"> <span>' +
+            '<input type="checkbox" name="' + content.title + '" value="Download"></span> ' +
+            '<span class="pre-email-h4">' + content.title + '</span>' +
             '</a>';
         if (content.content) {
             html += '<p class="pre-email-p truncate">' + stripHtmlTags(content.content) + '</p></div></div>';
@@ -133,8 +135,10 @@ function setClickHandlersOnSidebarItems() {
         
         viewingFolder = null;  // reset folder filter
         
+        showAllDates();
         hideWorkbinItems();
         hideFolders();
+        hideDatesWithoutContent();
     });
     
     $(".category-folders ul li").click(function () {
@@ -145,7 +149,10 @@ function setClickHandlersOnSidebarItems() {
         } else {
             viewingFolder = folder;       
         }
+
+        showAllDates();
         hideWorkbinItems();
+        hideDatesWithoutContent();
     });    
     
      $(".download").click(function () {
@@ -183,6 +190,8 @@ function hideWorkbinItems() {
 
         });
     contentToHide.hide();   
+
+    
 }
 
 function obtainWorkbinContentForModule(modCode) {
@@ -258,4 +267,29 @@ function showPreview(fileUrl) {
       });
 
     });
+}
+
+
+function showAllDates() {
+    $(".pre-email-dates").show();
+
+
+}
+
+function hideDatesWithoutContent() {
+    $(".pre-email-dates").each(function(index, value) {
+        var siblings = $(value).next();
+
+        for (var i = 0; i < siblings.length; i++) {
+            var sibling = siblings[i];
+            console.log(sibling);
+            if (!$(sibling).is(":visible") || !$(sibling).hasClass("workbinContent")) {
+                $(value).hide();
+                break;
+            }
+        }
+
+    });
+
+
 }
