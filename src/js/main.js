@@ -7,6 +7,7 @@ $(document).ready(function () {
     loadAnnouncementsHandler();
     loadFilters();
     loadFavouriteButtons();
+    loadActionButtons();
     setClickHandlersOnSidebarItems();
 });
 
@@ -213,6 +214,13 @@ function loadFavouriteButtons() {
         $(this).toggleClass('selected');
         var announcementId = $(this).parents('.pre-emails-wrapper').data('announcement-id');
         announcements[announcementId].favourited = $(this).hasClass('selected');
+    });
+}
+
+function loadActionButtons() {
+    var alertFriendsButton = $('.alert-friend');
+    alertFriendsButton.click(function() {
+        
     });
 }
 

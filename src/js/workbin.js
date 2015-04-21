@@ -38,19 +38,20 @@ function loadWorkbinList() {
 
     var workbinContainer = $(".pre-emails");
     workbinContainer.html("");
-     sortWorkbinContentByDate();
+    sortWorkbinContentByDate();
     for (var i = 0; i < workbinContent.length; i++) {
         var content = workbinContent[i];
         
         workbinContainer.append(getDateHeaderHtml(content.time));
-        var html = '<div class="workbinContent pre-emails-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '"><div class="pre-email-head">' +
+
+        var html = '<div class="workbinContent pre-emails-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '" onclick="showPreview(\'' + content.fileurl + '\')"><div class="pre-email-head">' +
             '<span class="pre-emails-name">' + content.moduleCode + '</span>' +
             '<span class="">&nbsp;&nbsp;&nbsp;&nbsp;' + content.folder + '</span>' +
             '<div class="right"><span class="pre-emailstime">' + getNiceTimeString(content.time) + '</span>' +
             '</div></div>' +
-            '<div class="pre-email-body">' +
-            '<a href ="' + content.fileurl + '">' +
-            '<h4 class="pre-email-h4">' + content.title + '</h4>' +
+            '<div class="pre-email-body"> <span>' +
+            '<input type="checkbox" name="' + content.title + '" value="Download"></span> ' +
+            '<span class="pre-email-h4">' + content.title + '</span>' +
             '</a>';
         if (content.content) {
             html += '<p class="pre-email-p truncate">' + stripHtmlTags(content.content) + '</p></div></div>';
@@ -87,6 +88,8 @@ function getDateHeaderHtml(date) {
     }
 }
 
+
+
 // load announcements
 // function loadAnnouncementsHandler() {
 //     $(".pre-emails-wrapper").click(function () {
@@ -120,6 +123,9 @@ var viewingModule;
 var viewingFolder;
 
 function setClickHandlersOnSidebarItems() {
+    $(".email-content").show();
+    $(".upload-container").hide();
+
     $(".category-modules ul li").click(function () {
         
         var modCode = $(this).data("module");
@@ -129,11 +135,16 @@ function setClickHandlersOnSidebarItems() {
         } else{
             viewingModule = modCode;
         }
-        
+
+        $(".email-content").show();
+        $(".upload-container").hide();
+
         viewingFolder = null;  // reset folder filter
         
+        showAllDates();
         hideWorkbinItems();
         hideFolders();
+        hideDatesWithoutContent();
     });
     
     $(".category-folders ul li").click(function () {
@@ -144,40 +155,57 @@ function setClickHandlersOnSidebarItems() {
         } else {
             viewingFolder = folder;       
         }
+
+        if (folder === "Submission") {
+            $(".email-content").hide();
+            $(".upload-container").show();
+        } else {
+            $(".email-content").show();
+            $(".upload-container").hide();
+        }
+
+        showAllDates();
         hideWorkbinItems();
+        hideDatesWithoutContent();
     });    
+    
+     $(".download").click(function () {
+         
+      }); 
 }
 
 function hideWorkbinItems() {
-     var contentToShow = 
-               $(".workbinContent").filter(function(val) {
-                    if (viewingModule && viewingFolder) {
-                        return ($(this).hasClass(viewingFolder) && $(this).hasClass(viewingModule));
-                    } else if (viewingModule) {
-                        return ($(this).hasClass(viewingModule));
-                    } else if (viewingFolder) {
-                        return ($(this).hasClass(viewingFolder));
-                    } else {
-                        return true;   
-                    }
-                    
-                });
-        contentToShow.show();
+    var contentToShow = 
+       $(".workbinContent").filter(function(val) {
+            if (viewingModule && viewingFolder) {
+                return ($(this).hasClass(viewingFolder) && $(this).hasClass(viewingModule));
+            } else if (viewingModule) {
+                return ($(this).hasClass(viewingModule));
+            } else if (viewingFolder) {
+                return ($(this).hasClass(viewingFolder));
+            } else {
+                return true;   
+            }
+
+        });
+    contentToShow.show();
         
-        var contentToHide = 
-              $(".workbinContent").filter(function(val) {
-                    if (viewingModule && viewingFolder) {
-                        return ($(this).hasClass(viewingFolder) !== true || $(this).hasClass(viewingModule) !== true);
-                    } else if (viewingModule) {
-                        return ($(this).hasClass(viewingModule) !== true);
-                    } else if (viewingFolder) {
-                        return ($(this).hasClass(viewingFolder) !== true);  
-                    } else {
-                        return false;
-                    }
-                    
-                });
-        contentToHide.hide();   
+    var contentToHide = 
+      $(".workbinContent").filter(function(val) {
+            if (viewingModule && viewingFolder) {
+                return ($(this).hasClass(viewingFolder) !== true || $(this).hasClass(viewingModule) !== true);
+            } else if (viewingModule) {
+                return ($(this).hasClass(viewingModule) !== true);
+            } else if (viewingFolder) {
+                return ($(this).hasClass(viewingFolder) !== true);  
+            } else {
+                return false;
+            }
+
+        });
+    contentToHide.hide();   
+
+    
 }
 
 function obtainWorkbinContentForModule(modCode) {
@@ -227,7 +255,60 @@ function hideFolders() {
 
 function sortWorkbinContentByDate() {
     workbinContent.sort(function(item1, item2) {
-        return item1.time < item2.time;
+        return new Date(item2.time) - new Date(item1.time);
     });
 
 }
+
+function showPreview(fileUrl) {
+    PDFJS.getDocument(fileUrl).then(function(pdf) {
+      $("#previewLoading").show();
+      pdf.getPage(1).then(function(page) {
+          $("#previewLoading").hide();
+            var scale = 1.5;
+            var viewport = page.getViewport(scale);
+
+            var canvas = document.getElementById('previewPage1');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport
+            };
+            page.render(renderContext);
+      });
+
+    });
+}
+
+
+function showAllDates() {
+    $(".pre-email-dates").show();
+
+
+}
+
+function hideDatesWithoutContent() {
+    $(".pre-email-dates").each(function(index, value) {
+        var siblings = $(value).next();
+
+        for (var i = 0; i < siblings.length; i++) {
+            var sibling = siblings[i];
+            console.log(sibling);
+            if (!$(sibling).is(":visible") || !$(sibling).hasClass("workbinContent")) {
+                $(value).hide();
+                break;
+            }
+        }
+
+    });
+
+
+}
+
+
+$("#submissionsUpload").dropzone({ url: "/fake/path",
+                                    dictDefaultMessage: "Drag and drop files here for submission",
+                                    dictResponseError: "Upload succeeded" }); // give success message for failure, since prototype

@@ -44,16 +44,114 @@ var announcements = [
 },
 {
 	id: 3,
-	moduleCode: "CS2107",
+	moduleCode: "CS3240",
 	author: "",
-	title: "I taught my dog how to smile!", 
-	content: "I gave Rusty a bone and he gave me a smile! I was so overwhelmed with joy I just had to take out my Canon 60D and snap the moment. I’m thinking about getting it framed, know of any places that do cheap frames?Let me know how things are with you!",
+	title: "Lab Assignment-2 demonstration", 
+	content: "<div>	&nbsp;</div><div>Dear Students&nbsp;</div><div>&nbsp;</div><div>Lab Assignment-2 presentations will be held on Friday 10th April during Lab hours at AS 0426.&nbsp;</div><div>	&nbsp;</div><div>Prepare a presentation/demonstration for (max) 5 minutes. Prepare to show your app, briefly explaining your design and specific UI components you have included, and demonstrating that the app content is displayed dynamically.&nbsp;</div><div>	&nbsp;</div><div>Your tutors may ask quick questions e.g. which components are absolutely necessary for your app to function properly ; which areas might be improved upon; what was difficult to handle/learn in Choc Chip framework etc.&nbsp;</div><div>	&nbsp;</div><div>best wishes&nbsp;</div><div>	&nbsp;</div><div>Mia&nbsp;</div>",
 	files: "", 
-	time: new Date("April 5, 2015 12:13:00"),
+	time: new Date("April 08, 2015 12:40:00"),
 	read: false,
 	favourited: 0,
 	remindInstance: null,
 	remindOn: new Date("April 12, 2015 4:33:00")
     // tags?
-}
+},
+{
+	id: 4,
+	moduleCode: "CS3240",
+	author: "",
+	title: "New Files in Workbin - : INTERACTION DESIGN", 
+	content: "<div>	&nbsp;</div><div>New Files :&nbsp;</div><div>&nbsp;</div><div>Folder Name : Lecture Notes&nbsp;</div><div>	&nbsp;</div><div>Filename: OverviewOfModuleTopics.pdf&nbsp;</div><div>Description: For revision session during lecture hrs in week 12.</div><div>	&nbsp;</div><div>Filename: Selected-Questions-Past-exam-papers.pdf&nbsp;</div><div>Description: For discussion during lecture hrs in week 12 and 13. </div><div>	&nbsp;</div><div>Click on the filename to download the file.&nbsp;</div>",
+	files: "", 
+	time: new Date("April 05, 2015 14:50:00"),
+	read: false,
+	favourited: 0,
+    remindInstance: null,
+	remindOn: null
+    // tags?
+},
+{
+	id: 5,
+	moduleCode: "CS3240",
+	author: "",
+	title: "Lecture hrs on 6th/7th & 13th/14th April", 
+	content: "<div>	&nbsp;</div><div>Dear Students&nbsp;</div><div>&nbsp;</div><div>Here is the information for the Lecture-Tutorial hrs in week 12(6th and 7th April) and week 13(13th and 14th April).&nbsp;</div><div>	&nbsp;</div><div>SUN Group : &nbsp;</div><div>6th April 9-12 noon</div><div>a. A short lecture on usability characteristics </div><div>b. Brief overview of module topics & exam related information </div><div>c. Discussion on selected questions from previous year exam papers </div><div>	&nbsp;</div><div>7th April 6:30-7:30pm (optional) : Sun group is encouraged to attend a guest talk: see details below in the Moon Group section&nbsp;</div><div>	&nbsp;</div><div>13th April 9-12 noon&nbsp;</div><div>a. Continuation of discussion on selected questions from previous year exam papers, if it is not completed on 6th </div><div>b.Consultation on individual/small-group  queries</div><div>	&nbsp;</div><div>MOON Group:&nbsp;</div><div>7th April 6:30-9:30pm</div><div>	&nbsp;</div><div>a. Guest Talk :Moving Towards Learning: Understanding Kinesthetic Learning and its implications on Communication and Media&nbsp;</div><div>Speaker :  Dr Lu Weiquan</div><div>Weiquan Lu is a research fellow at the Keio-NUS CUTE Center, NUS, where he leads the Augmented Learning Group. He holds a Ph.D from the faculty of Engineering and a bachelor's degree from the School of Computing, NUS. Weiquan's work has been published in many top-tier venues, such as the IEEE Transactions on Visualization and Computer Graphics, and the International Symposium in Mixed and Augmented Reality (ISMAR). His work has also been showcased in the Art Science Museum. Weiquan is a resident partner of the Science Centre Singapore and ITE College Central. His research pursuits include perceptual issues in Virtual and Augmented Reality, learning support systems, as well as mobile and wearable computing.</div><div>&nbsp;</div><div>  Abstract:</div></div>The benefits of movement (kinesthetics) on learning performance has been a long drawn debate in the learning sciences and HCI communities. Although there is much anecdotal evidence in the use of kinesthetic learning approaches to improve learning performance, there is also much circumstantial evidence arguing the contrary. In order to make progress in uncovering the vast potential of kinesthetic facilitation approaches for enhancing learning performance, many challenges must be overcome.</div><div>In this talk, I identify three challenges in the study of kinesthetic learning. I detail the efforts made in tackling these challenges, introducing the methodologies, communication methods and new media technologies used to isolate and study learning processes.&nbsp;</div><div>&nbsp;</div><div>b. Brief overview of module topics & exam related information</div><div>c. Discussion on selected questions from previous year exam papers</div><div>&nbsp;</div><div>14th April 6:30-9:30pm</div><div>a. Continuation of discussion on selected questions from previous year exam papers, if it is not completed on 6th</div><div> b. Consultation on individual/small-group  queries</div>",
+	files: "", 
+	time: new Date("April 05, 2015 14:19:00"),
+	read: false,
+	favourited: 0,
+    remindInstance: null,
+	remindOn: null
+    // tags?
+},
+{
+	id: 6,
+	moduleCode: "CS3240",
+	author: "",
+	title: "the next lab is on 10th April", 
+	content: "<div>	&nbsp;</div><div>Dear students,&nbsp;</div><div>&nbsp;</div><div>This is a reminder that there will be no lab sessions now onwards EXCEPT your Lab Assignment 2 Presentation on 10th April in lab hours. &nbsp;</div><div>	&nbsp;</div><div>All the best for your assignment and project!&nbsp;</div><div>	&nbsp;</div><div>Your Lab TA&nbsp;</div><div>Yiwen</div>",
+	files: "", 
+	time: new Date("March 27, 2015 14:16:00"),
+	read: false,
+	favourited: 0,
+    remindInstance: null,
+	remindOn: null
+    // tags?
+},
+{
+	id: 7,
+	moduleCode: "CS3240",
+	author: "",
+	title: "URGENT: Each team, please fill up a form http://goo.gl/forms/fQ50vGgVqO for info for STePS. ", 
+	content: "<div>	&nbsp;</div><div>Thanksnbsp;</div>",
+	files: "", 
+	time: new Date("March 17, 2015 08:47:00"),
+	read: false,
+	favourited: 0,
+    remindInstance: null,
+	remindOn: null
+    // tags?
+},
+{
+	id: 8,
+	moduleCode: "CS3240",
+	author: "",
+	title: "Project presentation dates (Ref: Project Document) 23rd march for SUN Gr & 24th Mar for MOON Gr ", 
+	content: "<div>	&nbsp;</div><div>This superseded date announced at the start of the sem.nbsp;</div>",
+	files: "", 
+	time: new Date("March 11, 2015 14:43:00"),
+	read: false,
+	favourited: 0,
+    remindInstance: null,
+	remindOn: null
+    // tags?
+},
+{
+	id: 9,
+	moduleCode: "CS3240",
+	author: "",
+	title: "Welcome!", 
+	content: "<div>	&nbsp;</div><div>Dear Studentsnbsp;</div><div>	&nbsp;</div><div>Welcome to CS3240 - Interaction Design, Semester 2 AY2014/15.</div><div>&nbsp;</div><div>Starting Monday 12th January, we will meet every week, for lecture cum tutorial at COM1 02-02.</div><div>There are two Lecture/Tutorial groups Monday 9am-12noon  and Tuesday 6:30-9:30pm.</div><div>	&nbsp;</div><div>You are expected to attend the lecture group you have enrolled for.</div><div>	&nbsp;</div><div>Lab sessions(2 hrs each) will start, from week 3, at AS6 Media Lab. You will register for your preferred slot through CORS.</div><div> Please be on lookout for announcements and updates in the next few days. </div><div>Meanwhile, join in CS3240 FB group at https://www.facebook.com/groups/CS3240.Hangout/</div>",
+	files: "", 
+	time: new Date("January 09, 2015 09:29:00"),
+	read: false,
+	favourited: 0,
+    remindInstance: null,
+	remindOn: null
+    // tags?
+},
+{
+	id: 10,
+	moduleCode: "CS3240",
+	author: "",
+	title: "New Files in Workbin - : INTERACTION DESIGN", 
+	content: "<div>	&nbsp;</div><div>New Files :&nbsp;</div><div>&nbsp;</div><div>Folder Name : Lecture Notes&nbsp;</div><div>	&nbsp;</div><div>Filename:  1 Interaction Design.pdf&nbsp;</div><div>Description: Lecture handout.</div><div>	&nbsp;</div><div>Click on the filename to download the file.&nbsp;</div>",
+	files: "", 
+	time: new Date("January 11, 2015 13:50:00"),
+	read: false,
+	favourited: 0,
+    remindInstance: null,
+	remindOn: null
+    // tags?
+},
 ];

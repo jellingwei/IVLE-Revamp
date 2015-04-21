@@ -1,19 +1,4 @@
-/* =================================*\
-    Author: Sadi Qevani
-    Date: xx.xx.xxxx
-    Website: www.example.com
-    Version: 0.1
-\* =================================*/
-
-/* ==================== *\
-    Imports
-\* ==================== */
-
 @import "fonts.css";
-
-/* ==================== *\
-    Base Styles
-\* ==================== */
 
 *,
 *:before,
@@ -73,11 +58,6 @@ textarea {
 a { color: #98959e; text-decoration: none; }
 a:hover {color: #6e6a74;}
 
-
-/* ==================== *\
-    Layout Style
-\* ==================== */
-
 .container {
     /*margin: 0 auto;*/
     width: auto;
@@ -100,19 +80,12 @@ a:hover {color: #6e6a74;}
     *zoom: 1;
 }
 
-/* *** Icons *** */
-
 .icon {
     display: inline-block;
     width: 16px;
     height: 16px;
     vertical-align: text-top;
 }
-
-.icon.announcement {
-    background: url('../img/file.jpg') no-repeat;
-}
-
 
 .categories ul li:hover .icon.announcement {
     background-position: 0 -16px;
@@ -261,7 +234,6 @@ html, body, section,
     border-bottom: 1px solid #3b3841;
 }
 
-/* *** Email Menu *** */
 .emails {
     width: 30%;
 }
@@ -452,10 +424,6 @@ html, body, section,
     padding: 20px 0;
 }
 
-/* ==================== *\
-    Helper Style
-\* ==================== */
-
 .invisible {
     visibility: hidden;
 }
@@ -538,17 +506,6 @@ html, body, section,
     height: auto;
 }
 
-/* ==================== *\
-    Others
-\* ==================== */
-
-
-
-/* ==================== *\
-    Media Queries
-\* ==================== */
-
-/* *** Tablets *** */
 @media screen and (max-width: 768px) {
 
     .container {
@@ -564,12 +521,10 @@ html, body, section,
 
 }
 
-/* *** Phones Landscape *** */
 @media screen and (max-width: 480px) {
 
 }
 
-/* *** Phones Portrait *** */
 @media screen and (max-width: 320px) {
 
 }

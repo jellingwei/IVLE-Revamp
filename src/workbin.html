@@ -40,7 +40,7 @@
 
             <nav class="categories">
                 <ul>
-                    <li><span class="icon"></span><a href="index.html">Announcements</a><span class="counter">2</span></li>
+                  <a href="index.html"> <li> <span class="icon"></span>Announcements</a><span id="announcements-counter" class="counter">10</span></li>
                     <li class="active"><span class="icon"></span><a>Workbin</a><span class="counter">6</span></li>
                 </ul>
             </nav>
@@ -96,17 +96,26 @@
                         <h1 class="email-title-header"></h1>
                     </div>
                 </div>
-                <div class="email-from">
-                    <div class="row">
-                        <span class="email-from-time left"></span>
-                        <span class="icon pin right"></span>
-                    </div>
-                </div>
                 <div class="row">
-                    <div class="email-inside-content">
-                        <p>No preview!</p>
+                    <div id="previewLoading" class="email-inside-content">
+                        <p>Preview is loading</p>
                     </div>
+                    <div id="viewerContainer">
+                        <div id="previewViewer" class="pdfViewer">
+                            <canvas id="previewPage1" width="1019" height="1319" style="width: 1019px; height: 1319px;"></canvas>
+                        </div>
+                    </div>
+                  <div class="email-from">
+                    <div class="row">
+                        <span class="icon download"></span><span>Download</span>
+                    </div> 
                 </div>
+            </section>
+            <section class="upload-container">
+                
+                <form 
+                      class="dropzone"
+                      id="submissionsUpload"></form>
             </section>
         </div>
     </div>
@@ -114,11 +123,16 @@
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
+    <script src="dist/pdf.js"></script></script>
     <script src="js/vendor/jquery.slimscroll.min.js"></script>
 
     <script src="js/plugins.js"></script>
+    
+<script src="js/vendor/dropzone.js"></script>
     <script src="js/workbin.js"></script>
     <script src="js/dummyWorkbinContent.js"></script>
+    
+
+    
 </body>
 </html>
