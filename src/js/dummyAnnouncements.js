@@ -10,6 +10,7 @@ var announcements = [
 	time: new Date("April 13, 2015 4:33:00"),
 	read: false,
 	favourited: 0,
+    remindInstance: null,
     remindOn: null
     // tags?
 },
@@ -23,6 +24,7 @@ var announcements = [
 	time: new Date("April 12, 2015 13:45:00"),
 	read: true,
 	favourited: 1,
+	remindInstance: null,
 	remindOn: new Date("April 13, 2015 4:33:00")
     // tags?
 },
@@ -36,6 +38,7 @@ var announcements = [
 	time: new Date("April 4, 2015 12:13:00"),
 	read: false,
 	favourited: 0,
+	remindInstance: null,
 	remindOn: null
     // tags?
 },
@@ -49,6 +52,7 @@ var announcements = [
 	time: new Date("April 5, 2015 12:13:00"),
 	read: false,
 	favourited: 0,
+	remindInstance: null,
 	remindOn: new Date("April 12, 2015 4:33:00")
     // tags?
 }

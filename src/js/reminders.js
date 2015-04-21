@@ -29,7 +29,7 @@ $('.reminders.time-input').val(moment().add(1, 'hours').format('hh:mm'));
 
 // calendar
 $('#datetimepicker').datetimepicker({
-	 format: 'DD/MM/YYYY'
+	format: 'DD/MM/YYYY'
 })
 
 $('.reminder-today').click(function() { 
@@ -89,39 +89,92 @@ $('#reminderModal').on('show.bs.modal', function (e) {
 		$('.modal-footer .btn-default').html("Discard Changes");
 		$('.modal-footer .btn-primary').html("Save Changes");
 
-		$('.reminder-delete').click(function() {
+		$('.reminder-delete').off('click').click(function() {
+			console.log("delete");
+			console.log(announcements[index]);
+			clearTimeout(announcements[index].remindInstance);
 			announcements[index].remindOn = null;
+			announcements[index].remindInstance = null;
 			// console.log(announcements[index]);
-			// TODO: remove timeOut
 			($invoker).removeClass("selected");
 		})
 
 	}
 
-	$('.reminder-save').click(function() {
+	$('.reminder-save').off('click').click(function() {
 		($invoker).addClass("selected");
 		saveChanges(index);
+
+		$('.modal-body .container-fluid').hide();
+		$('.modal-body .reminder-saved-msg').show();
+		$('.modal-footer').hide();
 
 	})
 
 });
 
-function saveChanges(id) {
+function saveChanges(index) {
 	var reminderTimeStr = moment($('.reminders.date-input').val(), 'DD/MM/YYYY').format('MMMM D, YYYY');
 	reminderTimeStr += " " + $('.reminders.time-input').val() + ":00";
 
 	var reminderTime = new Date(reminderTimeStr);
+	announcements[index].remindOn = reminderTime;
+	// console.log(announcements[index]);
 
-	announcements[id].remindOn = reminderTime;
-	// console.log(announcements[id]);
+	var announcementTitle = announcements[index].moduleCode + ": " + announcements[index].title;
+	setAlarm(index, reminderTime, announcementTitle);
 
-	// TODO: set timeout
-
-	$('.modal-body .container-fluid').hide();
-	$('.modal-body .reminder-saved-msg').show();
-	$('.modal-footer').hide();
-
-	// hide modal after 1s
+	// hide modal after 700ms
 	setTimeout(function() {$('#reminderModal').modal('hide');}, 700);
+
+}
+
+function setAlarm(index, reminderTime, announcementTitle) {
+	var timeDiff = reminderTime - new Date();
+	clearTimeout(announcements[index].remindInstance);
+
+	if (timeDiff > 0) {
+		if (Notification.permission === "granted") {
+			announcements[index].remindInstance = setTimeout(function(){ show(index, announcementTitle); }, timeDiff);
+
+		}
+
+		// Otherwise, we need to ask the user for permission
+		else if (Notification.permission !== 'denied') {
+			Notification.requestPermission(function (permission) {
+				// If the user is okay, let's create a notification
+				if (permission === "granted") {
+					announcements[index].remindInstance = setTimeout(function(){ show(index, announcementTitle); }, timeDiff);
+
+				}
+			});
+		} else {
+			console.log("duno what happened.");
+		}
+
+	}
+}
+
+function show(index, announcementTitle) {
+	var instance = new Notification(
+		"ModFeed: Announcments", {
+			body: announcementTitle,
+			icon: "img/reminder-icon-original.png"
+		}
+	);
+
+	instance.onclick = function () {
+		console.log("click? o,o");
+	};
+
+	instance.onerror = function () {
+		// Something to do
+	};
+	instance.onshow = function () {
+		$('*[data-announcement-id="' + index + '"]').removeClass("selected");
+	};
+	instance.onclose = function () {
+		// Something to do
+	};
 
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<script>
+	function notifyMe() {
+		// Let's check if the browser supports notifications
+		if (!("Notification" in window)) {
+			alert("This browser does not support desktop notifications");
+		}
+
+		// Let's check if the user is okay to get some notification
+		else if (Notification.permission === "granted") {
+			// If it's okay let's create a notification
+			var notification = new Notification("Hi there!");
+		}
+
+		// Otherwise, we need to ask the user for permission
+		else if (Notification.permission !== 'denied') { 
+			Notification.requestPermission(function (permission) {
+				// If the user is okay, let's create a notification
+				if (permission === "granted") {
+					var notification = new Notification("Hi there!");
+				}
+			});
+		}
+
+		// At last, if the user already denied any notification, and you 
+		// want to be respectful there is no need to bother them any more.
+	}
+
+	var Notification = window.Notification || window.mozNotification || window.webkitNotification;
+
+	Notification.requestPermission(function (permission) {
+		console.log(permission);
+	});
+
+	function show() {
+		var instance = new Notification(
+			"ModFeed: Announcments", {
+				body: "CS2102: New File Uploaded",
+				icon: "img/reminder-icon-original.png"
+			}
+		);
+
+		instance.onclick = function () {
+			// Something to do
+		};
+		instance.onerror = function () {
+			// Something to do
+		};
+		instance.onshow = function () {
+			// Something to do
+		};
+		instance.onclose = function () {
+			// Something to do
+		};
+	}
+</script>
+
+<button type="button" onclick="show()">Notify me!</button>
+
+<script>
+</script>
+</html>
