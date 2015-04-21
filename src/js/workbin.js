@@ -123,6 +123,9 @@ var viewingModule;
 var viewingFolder;
 
 function setClickHandlersOnSidebarItems() {
+    $(".email-content").show();
+    $(".upload-container").hide();
+
     $(".category-modules ul li").click(function () {
         
         var modCode = $(this).data("module");
@@ -132,7 +135,10 @@ function setClickHandlersOnSidebarItems() {
         } else{
             viewingModule = modCode;
         }
-        
+
+        $(".email-content").show();
+        $(".upload-container").hide();
+
         viewingFolder = null;  // reset folder filter
         
         showAllDates();
@@ -148,6 +154,14 @@ function setClickHandlersOnSidebarItems() {
             viewingFolder = null;
         } else {
             viewingFolder = folder;       
+        }
+
+        if (folder === "Submission") {
+            $(".email-content").hide();
+            $(".upload-container").show();
+        } else {
+            $(".email-content").show();
+            $(".upload-container").hide();
         }
 
         showAllDates();
@@ -293,3 +307,9 @@ function hideDatesWithoutContent() {
 
 
 }
+
+
+$("#submissionsUpload").dropzone({ url: "/fake/path",
+                                    dictDefaultMessage: "Drag and drop files here for submission",
+                                    dictResponseError: "Upload succeeded" }); // give success message for failure, since prototype
+>>>>>>> Stashed changes
