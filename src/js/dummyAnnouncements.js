@@ -23,7 +23,7 @@ var announcements = [
 	time: new Date("April 12, 2015 13:45:00"),
 	read: true,
 	favourited: 1,
-	remindOn: null
+	remindOn: new Date("April 13, 2015 4:33:00")
     // tags?
 },
 {
@@ -41,7 +41,7 @@ var announcements = [
 },
 {
 	id: 3,
-	moduleCode: "CZ2107",
+	moduleCode: "CS2107",
 	author: "",
 	title: "I taught my dog how to smile!", 
 	content: "I gave Rusty a bone and he gave me a smile! I was so overwhelmed with joy I just had to take out my Canon 60D and snap the moment. I’m thinking about getting it framed, know of any places that do cheap frames?Let me know how things are with you!",
@@ -49,7 +49,7 @@ var announcements = [
 	time: new Date("April 5, 2015 12:13:00"),
 	read: false,
 	favourited: 0,
-	remindOn: null
+	remindOn: new Date("April 12, 2015 4:33:00")
     // tags?
 }
 ];

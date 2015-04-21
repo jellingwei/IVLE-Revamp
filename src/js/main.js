@@ -72,6 +72,10 @@ function loadAnnouncementsList(predicate) {
         if (!announcement.read) {
             unreadAnnouncementCount++;
         }
+
+        if (announcements[i].remindOn != null) {
+            $('*[data-announcement-id="' + i + '"]').addClass("selected");
+        }
     }
     updateAnnouncementCounter();
 }
