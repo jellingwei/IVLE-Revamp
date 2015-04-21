@@ -1,4 +1,3 @@
-console.log("dummy announcements loaded");
 // dummy data for announcements
 var announcements = [
 { 
@@ -10,8 +9,8 @@ var announcements = [
 	files: "",
 	time: new Date("April 13, 2015 4:33:00"),
 	read: false,
-	favourited: 0
-    // reminder added?
+	favourited: 0,
+    remindOn: null
     // tags?
 },
 {
@@ -23,8 +22,8 @@ var announcements = [
 	files: "",
 	time: new Date("April 12, 2015 13:45:00"),
 	read: true,
-	favourited: 1
-    // reminder added?
+	favourited: 1,
+	remindOn: null
     // tags?
 },
 {
@@ -36,8 +35,8 @@ var announcements = [
 	files: "", 
 	time: new Date("April 4, 2015 12:13:00"),
 	read: false,
-	favourited: 0
-    // reminder added?
+	favourited: 0,
+	remindOn: null
     // tags?
 },
 {
@@ -49,8 +48,8 @@ var announcements = [
 	files: "", 
 	time: new Date("April 5, 2015 12:13:00"),
 	read: false,
-	favourited: 0
-    // reminder added?
+	favourited: 0,
+	remindOn: null
     // tags?
 }
 ];
