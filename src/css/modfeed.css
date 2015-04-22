@@ -40,6 +40,18 @@
     box-shadow: 0 1px 0 rgba(255,255,255,0.3), 0 0 1px rgba(0,0,0,0.6) inset;
 }
 
+.category-header {
+    margin: 0;
+    padding-left: 20px;
+    height: 35px;
+    background: #3b3842;
+    color: #c3dae3 ;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 35px;
+}
+
 .truncate {
     display:inline-block;
     width: 250px;
