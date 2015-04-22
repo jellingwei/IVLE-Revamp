@@ -127,6 +127,8 @@ function setClickHandlersOnSidebarItems() {
     $(".upload-container").hide();
 
     $(".category-modules ul li").click(function () {
+        $(".category-modules ul li").removeClass("active");
+        $(this).addClass("active");
         
         var modCode = $(this).data("module");
         
@@ -148,6 +150,8 @@ function setClickHandlersOnSidebarItems() {
     });
     
     $(".category-folders ul li").click(function () {
+        $(".category-folders ul li").removeClass("active");
+        $(this).addClass("active");
          var folder = $(this).data("folder");
          
         if (folder === viewingFolder) {

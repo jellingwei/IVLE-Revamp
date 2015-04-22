@@ -13,7 +13,8 @@
 
 .categories li.active, 
 .categories ul li:hover, .categories ul li:focus,
-.categories ul a:hover {
+.categories ul a li:hover, 
+.categories ul .active {
     background: #16a79d  ;
     background: -moz-linear-gradient(top,  #16a79d 0%, #527cbe 99%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5b83c3), color-stop(99%,#527cbe));
@@ -26,6 +27,8 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+
 
 .categories li.active .counter {
     border-radius: 3px;

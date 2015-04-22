@@ -103,6 +103,7 @@ a:hover {color: #6e6a74;}
 /* *** Icons *** */
 
 .icon {
+    padding: 0 10px;
     display: inline-block;
     width: 16px;
     height: 16px;

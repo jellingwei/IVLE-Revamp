@@ -87,41 +87,7 @@ a:hover {color: #6e6a74;}
     vertical-align: text-top;
 }
 
-.categories ul li:hover .icon.announcement {
-    background-position: 0 -16px;
-}
-.categories ul li:hover .icon.pointer {
-    background-position: -28px -16px;
-}
-.categories ul li:hover .icon.pin {
-    background-position: -52px -16px;
-}
-.categories ul li:hover .icon.sheet {
-    background-position: -78px -16px;
-}
-.categories ul li:hover .icon.trash {
-    background-position: -104px -16px;
-}
-.categories ul li:hover .icon.circle {
-    background-position: -130px -16px;
-}
 
-.icon.color {
-    background-image: none;
-    border-radius: 3px;
-}
-.icon.color.red {
-    background-color: #f1614f;
-}
-.icon.color.blue {
-    background-color: #3fbad4;
-}
-.icon.color.green {
-    background-color: #50ae47;
-}
-.icon.color.yellow {
-    background-color: #e8b144;
-}
 
 
 /* *** item App *** */
