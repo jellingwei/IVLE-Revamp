@@ -259,16 +259,6 @@ html, body, section,
     font-weight: normal;
 }
 
-.calendar {
-    display: inline-block;
-    background: url('../img/sprites/calendar.png') no-repeat top left;
-    height: 18px;
-    width: 18px;
-    margin-top: 10px;
-    float: right;
-    cursor: pointer;
-}
-
 .pre-email-dates {
     background: #e3dfe8;
     border-top: 1px solid #c9c4d2;
@@ -327,33 +317,6 @@ html, body, section,
 .pre-emails-wrapper.active .pre-emails-time ,
 .pre-emails-wrapper:hover .pre-emails-time {
     color: #b8cbe6;
-}
-
-.pre-emails-checkin {
-    display: inline-block;
-    background: url('../img/sprites/pin-orange.png') no-repeat top left;
-    height: 17px;
-    width: 17px;
-    vertical-align: middle;
-}
-
-.pre-emails-wrapper.active .pre-emails-checkin,
-.pre-emails-wrapper:hover .pre-emails-checkin {
-    background-image: url('../img/sprites/pin-white.png');
-}
-
-.pre-emails-dropdown {
-    display: inline-block;
-    background: url('../img/sprites/dropdown-white.png') no-repeat top left;
-    height: 17px;
-    width: 17px;
-    vertical-align: middle;
-    cursor: pointer;
-}
-
-.pre-emails-wrapper.active .pre-emails-dropdown,
-.pre-emails-wrapper:hover .pre-emails-dropdown {
-    background-image: url('../img/sprites/dropdown-blue.png');
 }
 
 .pre-email-body {
