@@ -235,8 +235,10 @@ function setClickHandlersOnSidebarItems() {
         var modCode = $(this).data("module");
         
         viewingModule = modCode;
-
+        
+        showAllDates();
         hideAnnouncements();
+        hideDatesWithoutContent();
     });
     
     $(".category-folders ul li").click(function () {
@@ -245,11 +247,37 @@ function setClickHandlersOnSidebarItems() {
 
          var folder = $(this).data("folder");
         
-         viewingFolder = folder;    
+         viewingFolder = folder;  
+        
+        showAllDates();
         hideAnnouncements();
+         hideDatesWithoutContent();
     });    
 }
 
+function showAllDates() {
+    $(".pre-item-dates").show();
+
+
+}
+
+function hideDatesWithoutContent() {
+    $(".pre-item-dates").each(function(index, value) {
+        var siblings = $(value).next();
+
+        for (var i = 0; i < siblings.length; i++) {
+            var sibling = siblings[i];
+            console.log(sibling);
+            if (!$(sibling).is(":visible") || !$(sibling).hasClass("announcement")) {
+                $(value).hide();
+                break;
+            }
+        }
+
+    });
+
+
+}
 
 function hideAnnouncements() {
     var contentToShow = 
