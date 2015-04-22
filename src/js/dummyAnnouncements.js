@@ -31,7 +31,7 @@ var announcements = [
 {
 	id: 2,
 	moduleCode: "CS2106",
-	author: "",
+	author: "Colin Tan",
 	title: "New Files in Workbin - CS2106 : INTRODUCTION TO OPERATING SYSTEMS",
 	content: "<div>	&nbsp;</div><div>New Files :&nbsp;</div><div>&nbsp;</div><div>Folder Name : Colin's Lecture Notes&nbsp;</div><div>	&nbsp;</div><div>Filename: cs2106lect12.pdf&nbsp;</div><div>Description: Internal Protection Mechanisms</div><div>Click on the filename to download the file.&nbsp;</div>",
 	files: "",
@@ -197,5 +197,60 @@ var announcements = [
         remindOn: null
         // tags?
     },
-
+    {
+        id: 14,
+        moduleCode: "CS3217",
+        author: "Joel Low Wor On",
+        title: "STePS Meal Vouchers",
+        content: "Hello all,<br><br>Hope your preparations for STePS tomorrow are going well.<br><br>I have the meal vouchers for all of you tomorrow. Please look for me at NUS Hackerspace (AS6 #02-11) today till 6pm, or tomorrow 10am to 5pm. If I&#39;m not at the place, just ask anyone around here.<br><br>You will be issued 2 vouchers. One is the pre-event meal voucher which is a bento box. Distribution for those will be at 5pm (hence my presence at Hackerspace until 5pm). The other is the buffet meal voucher. The buffet begins at 7pm.<br><br>Regards,<br>Joel",
+        files: "",
+        time: new Date("April 21, 2015 15:30:00"),
+        read: false,
+        favourited: 1,
+        remindInstance: null,
+        remindOn: null
+        // tags?
+    },
+    {
+        id: 15,
+        moduleCode: "CS3217",
+        author: "Joel Low Wor On",
+        title: "Reminder: Final Project Videos for STePS",
+        content: "Hello all,<br><br>We have only received the submission from one group. Please send a link to your final project video to&nbsp;<a href=\"mailto:cs3217-staff@googlegroups.com\">cs3217-staff@googlegroups.com</a>; the deadline is <strong>tomorrow</strong> 17 Apr.<br><br>Joel",
+        files: "",
+        time: new Date("April 16, 2015 11:54:00"),
+        read: false,
+        favourited: 1,
+        remindInstance: null,
+        remindOn: null
+        // tags?
+    },
+    {
+        id: 16,
+        moduleCode: "LSM1303",
+        author: "Sivasothi N.",
+        title: "IVLE: LSM1303: Visiting the Lee Kong Chian Natural History Museum",
+        content: "Dear animal behaviour students,<br><br>the Lee Kong Chian Natural History Museum will be opened to the public from 28th April 2015.<br>NUS&nbsp;students may book a free ticket and time slot every three months; see this page for details:<br>http://lkcnhm.nus.edu.sg/nus/index.php/nusstaffstudents<br><br>Enjoy the museum, it took 25 years to materialise in this form!<br><br>Cheerio!<br><br>Sivasothi aka Otterman",
+        files: "",
+        time: new Date("April 20, 2015 18:45:00"),
+        read: false,
+        favourited: 1,
+        remindInstance: null,
+        remindOn: null
+        // tags?
+    },
+    {
+        id: 17,
+        moduleCode: "LSM1303",
+        author: "Sivasothi N.",
+        title: "IVLE: LSM1303: Symposium Project Peer Review exercise – please complete by Thu 23 Apr 2015: 1700h",
+        content: "Dear students,<br><br>It is time for the end of semester peer review exercise. Please rate your effort and that of each of your symposium group members at <a href=\"http://tinyurl.com/lsm1303-review2015\">http://tinyurl.com/lsm1303-review2015</a>.<br><br>In this peer review exercise, you evaluate group members in order to do the following:&nbsp;<ol><li>Acknowledge significant contributions to the symposium project by specific individuals.</li><li>Identify non-contributing members.</li></ol>When you fill in the form, please write down your full name, group number (e.g. 01, 16 or 23) and matric numbers so we can process the information effectively. Please&nbsp;complete this form by Thu 23 Apr 2015: 1700h.<br><br>This information will be read by the Lecturer and FTTAs only and we will respond to the feedback.&nbsp;<br><br>Thank you and have a good revision!<br><br>Cheerio!<br><br>Sivasothi aka Otterman",
+        files: "",
+        time: new Date("April 20, 2015 15:25:00"),
+        read: false,
+        favourited: 1,
+        remindInstance: null,
+        remindOn: null
+        // tags?
+    },
 ];
