@@ -50,7 +50,7 @@ function loadWorkbinList() {
             '<div class="right"><span class="pre-emailstime">' + getNiceTimeString(content.time) + '</span>' +
             '</div></div>' +
             '<div class="pre-email-body"> <span>' +
-            '<input type="checkbox" name="' + content.title + '" value="Download"></span> ' +
+            '<input class="checkbox1" type="checkbox" name="' + content.title + '" value="Download"></span> ' +
             '<span class="pre-email-h4">' + content.title + '</span>' +
             '</a>';
         if (content.content) {
@@ -169,8 +169,18 @@ function setClickHandlersOnSidebarItems() {
         hideDatesWithoutContent();
     });    
     
-     $(".download").click(function () {
-         
+     $("#selectall").click(function () {
+         if(this.checked) {
+             $('.checkbox1').each(function() {
+                 this.checked = true;
+             });
+         } else {
+            $('.checkbox1').each(function() {
+                this.checked = false;
+            });
+                
+         }
+             
       }); 
 }
 
