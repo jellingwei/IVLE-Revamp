@@ -41,10 +41,10 @@ function loadWorkbinList() {
     sortWorkbinContentByDate();
     for (var i = 0; i < workbinContent.length; i++) {
         var content = workbinContent[i];
-        
+
         workbinContainer.append(getDateHeaderHtml(content.time));
 
-        var html = '<div class="workbinContent pre-items-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '" onclick="showPreview(\'' + content.fileurl + '\')"><div class="pre-item-head">' +
+        var html = '<div class="workbinContent pre-items-wrapper ' + content.folder + ' ' + content.moduleCode + ' " data-announcement-id="' + i + '" onclick="showPreview(\'' + content.fileurl + '\')"><div class="pre-item-head">' +
             '<span class="pre-items-name">' + content.moduleCode + '</span>' +
             '<span class="">&nbsp;&nbsp;&nbsp;&nbsp;' + content.folder + '</span>' +
             '<div class="right"><span class="pre-itemstime">' + getNiceTimeString(content.time) + '</span>' +
@@ -79,7 +79,7 @@ function getDateHeaderHtml(date) {
     } else if (date.toDateString() === yesterdayDate.toDateString() && !displayedHeaders[date.toDateString()]) {
         displayedHeaders[date.toDateString()] = true;
         value = "Yesterday";
-    } else if (!displayedHeaders[date.toDateString()]){
+    } else if (!displayedHeaders[date.toDateString()]) {
         displayedHeaders[date.toDateString()] = true;
         value = date.toDateString();
     }
@@ -87,7 +87,6 @@ function getDateHeaderHtml(date) {
         return '<h3 class="pre-item-dates">' + value + '</h3>';
     }
 }
-
 
 
 // load announcements
@@ -107,7 +106,7 @@ function getDateHeaderHtml(date) {
 // }
 
 // format time nicely
-function getNiceTimeString(date){
+function getNiceTimeString(date) {
     var value;
     value = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
     value += ':';
@@ -129,12 +128,12 @@ function setClickHandlersOnSidebarItems() {
     $(".category-modules ul li").click(function () {
         $(".category-modules ul li").removeClass("active");
         $(this).addClass("active");
-        
+
         var modCode = $(this).data("module");
-        
+
         if (modCode === viewingModule) {
             viewingModule = null;
-        } else{
+        } else {
             viewingModule = modCode;
         }
 
@@ -142,26 +141,26 @@ function setClickHandlersOnSidebarItems() {
         $(".upload-container").hide();
 
         viewingFolder = null;  // reset folder filter
-        
+
         showAllDates();
         hideWorkbinItems();
         hideFolders();
         hideDatesWithoutContent();
     });
-    
+
     $(".category-folders ul li").click(function () {
         $(".category-folders ul li").removeClass("active");
         $(this).addClass("active");
-         var folder = $(this).data("folder");
-         
+        var folder = $(this).data("folder");
+
         if (folder === viewingFolder) {
             viewingFolder = null;
         } else {
-            viewingFolder = folder;       
+            viewingFolder = folder;
         }
 
         if (folder === "Submission") {
-             $(".item-content").hide();
+            $(".item-content").hide();
             $(".item-options").hide();
             $(".upload-container").show();
         } else {
@@ -173,26 +172,26 @@ function setClickHandlersOnSidebarItems() {
         showAllDates();
         hideWorkbinItems();
         hideDatesWithoutContent();
-    });    
-    
-     $("#selectall").click(function () {
-         if(this.checked) {
-             $('.checkbox1').each(function() {
-                 this.checked = true;
-             });
-         } else {
-            $('.checkbox1').each(function() {
+    });
+
+    $("#selectall").click(function () {
+        if (this.checked) {
+            $('.checkbox1').each(function () {
+                this.checked = true;
+            });
+        } else {
+            $('.checkbox1').each(function () {
                 this.checked = false;
             });
-                
-         }
-             
-      }); 
+
+        }
+
+    });
 }
 
 function hideWorkbinItems() {
-    var contentToShow = 
-       $(".workbinContent").filter(function(val) {
+    var contentToShow =
+        $(".workbinContent").filter(function (val) {
             if (viewingModule && viewingFolder) {
                 return ($(this).hasClass(viewingFolder) && $(this).hasClass(viewingModule));
             } else if (viewingModule) {
@@ -200,33 +199,33 @@ function hideWorkbinItems() {
             } else if (viewingFolder) {
                 return ($(this).hasClass(viewingFolder));
             } else {
-                return true;   
+                return true;
             }
 
         });
     contentToShow.show();
-        
-    var contentToHide = 
-      $(".workbinContent").filter(function(val) {
+
+    var contentToHide =
+        $(".workbinContent").filter(function (val) {
             if (viewingModule && viewingFolder) {
                 return ($(this).hasClass(viewingFolder) !== true || $(this).hasClass(viewingModule) !== true);
             } else if (viewingModule) {
                 return ($(this).hasClass(viewingModule) !== true);
             } else if (viewingFolder) {
-                return ($(this).hasClass(viewingFolder) !== true);  
+                return ($(this).hasClass(viewingFolder) !== true);
             } else {
                 return false;
             }
 
         });
-    contentToHide.hide();   
+    contentToHide.hide();
 
-    
+
 }
 
 function obtainWorkbinContentForModule(modCode) {
     if (modCode) {
-        var moduleContent = workbinContent.filter(function(workbinItem) {
+        var moduleContent = workbinContent.filter(function (workbinItem) {
             return (workbinItem.moduleCode === modCode);
         });
         return moduleContent;
@@ -236,51 +235,51 @@ function obtainWorkbinContentForModule(modCode) {
 }
 
 function obtainFoldersForModule(modCode) {
-    var folders = obtainWorkbinContentForModule(modCode).map(function(workbinItem) {
-        return workbinItem.folder;    
+    var folders = obtainWorkbinContentForModule(modCode).map(function (workbinItem) {
+        return workbinItem.folder;
     });
-    
-    
+
+
     // remove duplicates
-    folders = folders.filter(function (v, i, a) { 
-        return a.indexOf(v) == i 
+    folders = folders.filter(function (v, i, a) {
+        return a.indexOf(v) == i
     });
-    
+
     return folders;
 }
 
 
 function hideFolders() {
     var folderNamesToShow = obtainFoldersForModule(viewingModule);
-    
+
     var allFolders = obtainFoldersForModule();
-    var folderNamesToHide = allFolders.filter(function(folder) {
-        return folderNamesToShow.indexOf(folder) === -1;   
+    var folderNamesToHide = allFolders.filter(function (folder) {
+        return folderNamesToShow.indexOf(folder) === -1;
     });
-    
-    var foldersToShow = $(".category-folders ul li").filter(function(folder) {
-        return folderNamesToShow.indexOf($(this).data("folder")) !== -1; 
+
+    var foldersToShow = $(".category-folders ul li").filter(function (folder) {
+        return folderNamesToShow.indexOf($(this).data("folder")) !== -1;
     });
-    var foldersToHide = $(".category-folders ul li").filter(function(folder) {
-        return folderNamesToHide.indexOf($(this).data("folder")) !== -1; 
+    var foldersToHide = $(".category-folders ul li").filter(function (folder) {
+        return folderNamesToHide.indexOf($(this).data("folder")) !== -1;
     });
-    
+
     foldersToShow.show();
     foldersToHide.hide();
 }
 
 function sortWorkbinContentByDate() {
-    workbinContent.sort(function(item1, item2) {
+    workbinContent.sort(function (item1, item2) {
         return new Date(item2.time) - new Date(item1.time);
     });
 
 }
 
 function showPreview(fileUrl) {
-    PDFJS.getDocument(fileUrl).then(function(pdf) {
-      $("#previewLoading").show();
-      pdf.getPage(1).then(function(page) {
-          $("#previewLoading").hide();
+    PDFJS.getDocument(fileUrl).then(function (pdf) {
+        $("#previewLoading").show();
+        pdf.getPage(1).then(function (page) {
+            $("#previewLoading").hide();
             var scale = 1.5;
             var viewport = page.getViewport(scale);
 
@@ -290,11 +289,11 @@ function showPreview(fileUrl) {
             canvas.width = viewport.width;
 
             var renderContext = {
-              canvasContext: context,
-              viewport: viewport
+                canvasContext: context,
+                viewport: viewport
             };
             page.render(renderContext);
-      });
+        });
 
     });
 }
@@ -307,7 +306,7 @@ function showAllDates() {
 }
 
 function hideDatesWithoutContent() {
-    $(".pre-item-dates").each(function(index, value) {
+    $(".pre-item-dates").each(function (index, value) {
         var siblings = $(value).next();
 
         for (var i = 0; i < siblings.length; i++) {
@@ -325,6 +324,8 @@ function hideDatesWithoutContent() {
 }
 
 
-$("#submissionsUpload").dropzone({ url: "/fake/path",
-                                    dictDefaultMessage: "Click / Drag and drop files here for submission",
-                                    dictResponseError: "Upload succeeded" }); // give success message for failure, since prototype
+$("#submissionsUpload").dropzone({
+    url: "/fake/path",
+    dictDefaultMessage: "Click / Drag and drop files here for submission",
+    dictResponseError: "Upload succeeded"
+}); // give success message for failure, since prototype
