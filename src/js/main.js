@@ -158,7 +158,7 @@ function loadAnnouncementsHandler() {
         announcementTitleHeader.html('');
         announcementTitleHeader.append("<b>" + announcement.moduleCode + ":</b> " + announcement.title);
         announcementTime.html('');
-        announcementTime.append(getNiceDateString(announcement.time));
+        announcementTime.append(getNiceDateString(announcement.time) + ", from " + announcement.author);
         announcementFavouriteIcon.html("");
         announcementFavouriteIcon.append('<span class="pre-announcements-favourite ' + favouritedClass + '"></span>');
         announcementContent.html('');
