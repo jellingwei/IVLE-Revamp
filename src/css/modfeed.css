@@ -24,6 +24,7 @@
     font-size: 13px;
     color: #FFFFFF;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .categories li.active .counter {
