@@ -161,10 +161,12 @@ function setClickHandlersOnSidebarItems() {
         }
 
         if (folder === "Submission") {
-            $(".item-content").hide();
+             $(".item-content").hide();
+            $(".item-options").hide();
             $(".upload-container").show();
         } else {
             $(".item-content").show();
+            $(".item-options").show();
             $(".upload-container").hide();
         }
 
@@ -324,5 +326,5 @@ function hideDatesWithoutContent() {
 
 
 $("#submissionsUpload").dropzone({ url: "/fake/path",
-                                    dictDefaultMessage: "Drag and drop files here for submission",
+                                    dictDefaultMessage: "Click / Drag and drop files here for submission",
                                     dictResponseError: "Upload succeeded" }); // give success message for failure, since prototype
