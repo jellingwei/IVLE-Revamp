@@ -15,7 +15,6 @@ $(document).ready(function () {
 $(".close-menu").click(function () {
     // var toggleWidth = $(".menu").width() == 50 ? "15%" : "50px";
     // $(".menu").animate({ width: toggleWidth });
-
     if ($(".menu").width() == 50) {
         $(".menu").animate({width: "15%"});
         $(".min-max .row").css("padding", "0 20px");
