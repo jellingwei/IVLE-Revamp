@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(".pre-emails").slimscroll({
+    $(".pre-items").slimscroll({
         height: 'auto'
     });
 
@@ -36,10 +36,10 @@ function isAnnouncementOfViewingModule(modCode) {
     return true;
 }
 
-// pre-emails
+// pre-items
 var unreadAnnouncementCount = 0;
 function loadAnnouncementsList(predicate) {
-    var announcementsContainer = $(".pre-emails");
+    var announcementsContainer = $(".pre-items");
     announcementsContainer.html("");
     displayedHeaders = [];
     unreadAnnouncementCount = 0;
@@ -54,10 +54,10 @@ function loadAnnouncementsList(predicate) {
         if (predicate == null || (predicate(announcement) && isAnnouncementOfViewingModule(modCode)) ) {
             // TODO:
             announcementsContainer.append(getDateHeaderHtml(announcement.time));
-            var announcementHtml = '<div class="pre-emails-wrapper ' + readClass + ' ' + modCode + ' announcement" data-announcement-id="' + announcement.id + '">' +
+            var announcementHtml = '<div class="pre-items-wrapper ' + readClass + ' ' + modCode + ' announcement" data-announcement-id="' + announcement.id + '">' +
                 '<div class="pre-email-head">' +
-                '<span class="pre-emails-name">' + announcement.moduleCode + '</span>' +
-                '<div class="right"><span class="pre-emailstime">' + getNiceTimeString(announcement.time) + '</span>' +
+                '<span class="pre-items-name">' + announcement.moduleCode + '</span>' +
+                '<div class="right"><span class="pre-itemstime">' + getNiceTimeString(announcement.time) + '</span>' +
                 '<span class="middot">&middot;</span>' +
                 '<span class="pre-announcements-favourite ' + favouritedClass + '"></span>' +
                 '<span class="middot">&middot;</span>' +
@@ -135,8 +135,8 @@ function getNiceTimeString(date) {
 
 // load announcements
 function loadAnnouncementsHandler() {
-    $('.pre-emails-wrapper').click(function () {
-        $('.pre-emails-wrapper').removeClass('active');
+    $('.pre-items-wrapper').click(function () {
+        $('.pre-items-wrapper').removeClass('active');
         $(this).addClass('active');
         $(this).removeClass('unread');
 
@@ -211,7 +211,7 @@ function loadFavouriteButtons() {
     var favouriteButtons = $('.pre-announcements-favourite');
     favouriteButtons.click(function () {
         $(this).toggleClass('selected');
-        var announcementId = $(this).parents('.pre-emails-wrapper').data('announcement-id');
+        var announcementId = $(this).parents('.pre-items-wrapper').data('announcement-id');
         announcements[announcementId].favourited = $(this).hasClass('selected');
     });
 }

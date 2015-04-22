@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(".pre-emails").slimscroll({
+    $(".pre-items").slimscroll({
         height: 'auto'
     });
 
@@ -28,7 +28,7 @@ $(".close-menu").click(function () {
 
 });
 
-// pre-emails
+// pre-items
 
 function loadWorkbinList() {
     var todayDate = new Date();
@@ -36,7 +36,7 @@ function loadWorkbinList() {
     var yesterdayHeader = '<h3 class="pre-email-dates">Yesterday</h3>';
     var dateHeader = '<h3 class="pre-email-dates"></h3>';
 
-    var workbinContainer = $(".pre-emails");
+    var workbinContainer = $(".pre-items");
     workbinContainer.html("");
     sortWorkbinContentByDate();
     for (var i = 0; i < workbinContent.length; i++) {
@@ -44,10 +44,10 @@ function loadWorkbinList() {
         
         workbinContainer.append(getDateHeaderHtml(content.time));
 
-        var html = '<div class="workbinContent pre-emails-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '" onclick="showPreview(\'' + content.fileurl + '\')"><div class="pre-email-head">' +
-            '<span class="pre-emails-name">' + content.moduleCode + '</span>' +
+        var html = '<div class="workbinContent pre-items-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '" onclick="showPreview(\'' + content.fileurl + '\')"><div class="pre-email-head">' +
+            '<span class="pre-items-name">' + content.moduleCode + '</span>' +
             '<span class="">&nbsp;&nbsp;&nbsp;&nbsp;' + content.folder + '</span>' +
-            '<div class="right"><span class="pre-emailstime">' + getNiceTimeString(content.time) + '</span>' +
+            '<div class="right"><span class="pre-itemstime">' + getNiceTimeString(content.time) + '</span>' +
             '</div></div>' +
             '<div class="pre-email-body"> <span>' +
             '<input class="checkbox1" type="checkbox" name="' + content.title + '" value="Download"></span> ' +
@@ -92,8 +92,8 @@ function getDateHeaderHtml(date) {
 
 // load announcements
 // function loadAnnouncementsHandler() {
-//     $(".pre-emails-wrapper").click(function () {
-//         $(".pre-emails-wrapper").removeClass('active');
+//     $(".pre-items-wrapper").click(function () {
+//         $(".pre-items-wrapper").removeClass('active');
 //         $(this).addClass('active');
 
 //         var index = $(this).data('announcement-id');
