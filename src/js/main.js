@@ -55,7 +55,7 @@ function loadAnnouncementsList(predicate) {
             // TODO:
             announcementsContainer.append(getDateHeaderHtml(announcement.time));
             var announcementHtml = '<div class="pre-items-wrapper ' + readClass + ' ' + modCode + ' announcement" data-announcement-id="' + announcement.id + '">' +
-                '<div class="pre-email-head">' +
+                '<div class="pre-item-head">' +
                 '<span class="pre-items-name">' + announcement.moduleCode + '</span>' +
                 '<div class="right"><span class="pre-itemstime">' + getNiceTimeString(announcement.time) + '</span>' +
                 '<span class="middot">&middot;</span>' +
@@ -63,9 +63,9 @@ function loadAnnouncementsList(predicate) {
                 '<span class="middot">&middot;</span>' +
                 '<span class="pre-announcements-reminder" data-toggle="modal" data-target="#reminderModal" data-announcement-id="' + announcement.id + '"></span>' +
                 '</div></div>' +
-                '<div class="pre-email-body">' +
-                '<h4 class="pre-email-h4 truncate">' + announcement.title + '</h4>' +
-                '<p class="pre-email-p truncate">' + stripHtmlTags(announcement.content) + '</p></div></div>';
+                '<div class="pre-item-body">' +
+                '<h4 class="pre-item-h4 truncate">' + announcement.title + '</h4>' +
+                '<p class="pre-item-p truncate">' + stripHtmlTags(announcement.content) + '</p></div></div>';
             announcementsContainer.append(announcementHtml);
         }
 
@@ -106,7 +106,7 @@ function getDateHeaderHtml(date) {
     } else if (!displayedHeaders[date.toDateString()]) {
         displayedHeaders[date.toDateString()] = true;
     }
-    return '<h3 class="pre-email-dates">' + value + '</h3>';
+    return '<h3 class="pre-item-dates">' + value + '</h3>';
 }
 
 function getNiceDateString(date) {
@@ -150,9 +150,9 @@ function loadAnnouncementsHandler() {
             unreadAnnouncementCount--;
             updateAnnouncementCounter();
         }
-        var announcementTitleHeader = $('.email-title-header');
-        var announcementContent = $('.email-inside-content');
-        var announcementTime = $('.email-from-time');
+        var announcementTitleHeader = $('.item-title-header');
+        var announcementContent = $('.item-inside-content');
+        var announcementTime = $('.item-from-time');
         var announcementFavouriteIcon = $('.announcement-favourite-icon');
 
         announcementTitleHeader.html('');
@@ -223,7 +223,7 @@ function loadActionButtons() {
     });
 }
 
-// view-email
+// view-item
 var viewingModule;
 
 

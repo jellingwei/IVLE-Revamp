@@ -32,9 +32,9 @@ $(".close-menu").click(function () {
 
 function loadWorkbinList() {
     var todayDate = new Date();
-    var todayHeader = '<h3 class="pre-email-dates">Today</h3>';
-    var yesterdayHeader = '<h3 class="pre-email-dates">Yesterday</h3>';
-    var dateHeader = '<h3 class="pre-email-dates"></h3>';
+    var todayHeader = '<h3 class="pre-item-dates">Today</h3>';
+    var yesterdayHeader = '<h3 class="pre-item-dates">Yesterday</h3>';
+    var dateHeader = '<h3 class="pre-item-dates"></h3>';
 
     var workbinContainer = $(".pre-items");
     workbinContainer.html("");
@@ -44,17 +44,17 @@ function loadWorkbinList() {
         
         workbinContainer.append(getDateHeaderHtml(content.time));
 
-        var html = '<div class="workbinContent pre-items-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '" onclick="showPreview(\'' + content.fileurl + '\')"><div class="pre-email-head">' +
+        var html = '<div class="workbinContent pre-items-wrapper ' + content.folder + ' ' + content.moduleCode +' " data-announcement-id="' + i + '" onclick="showPreview(\'' + content.fileurl + '\')"><div class="pre-item-head">' +
             '<span class="pre-items-name">' + content.moduleCode + '</span>' +
             '<span class="">&nbsp;&nbsp;&nbsp;&nbsp;' + content.folder + '</span>' +
             '<div class="right"><span class="pre-itemstime">' + getNiceTimeString(content.time) + '</span>' +
             '</div></div>' +
-            '<div class="pre-email-body"> <span>' +
+            '<div class="pre-item-body"> <span>' +
             '<input class="checkbox1" type="checkbox" name="' + content.title + '" value="Download"></span> ' +
-            '<span class="pre-email-h4">' + content.title + '</span>' +
+            '<span class="pre-item-h4">' + content.title + '</span>' +
             '</a>';
         if (content.content) {
-            html += '<p class="pre-email-p truncate">' + stripHtmlTags(content.content) + '</p></div></div>';
+            html += '<p class="pre-item-p truncate">' + stripHtmlTags(content.content) + '</p></div></div>';
         }
         workbinContainer.append(html);
     }
@@ -84,7 +84,7 @@ function getDateHeaderHtml(date) {
         value = date.toDateString();
     }
     if (value != "") {
-        return '<h3 class="pre-email-dates">' + value + '</h3>';
+        return '<h3 class="pre-item-dates">' + value + '</h3>';
     }
 }
 
@@ -98,10 +98,10 @@ function getDateHeaderHtml(date) {
 
 //         var index = $(this).data('announcement-id');
 
-//         $(".email-title-header").html("");
-//         $(".email-title-header").append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
-//         $(".email-inside-content").html("");
-//         $(".email-inside-content").append(announcements[index].content);
+//         $(".item-title-header").html("");
+//         $(".item-title-header").append("<b>" + announcements[index].moduleCode + ":</b> " + announcements[index].title);
+//         $(".item-inside-content").html("");
+//         $(".item-inside-content").append(announcements[index].content);
 
 //     });
 // }
@@ -123,7 +123,7 @@ var viewingModule;
 var viewingFolder;
 
 function setClickHandlersOnSidebarItems() {
-    $(".email-content").show();
+    $(".item-content").show();
     $(".upload-container").hide();
 
     $(".category-modules ul li").click(function () {
@@ -136,7 +136,7 @@ function setClickHandlersOnSidebarItems() {
             viewingModule = modCode;
         }
 
-        $(".email-content").show();
+        $(".item-content").show();
         $(".upload-container").hide();
 
         viewingFolder = null;  // reset folder filter
@@ -157,10 +157,10 @@ function setClickHandlersOnSidebarItems() {
         }
 
         if (folder === "Submission") {
-            $(".email-content").hide();
+            $(".item-content").hide();
             $(".upload-container").show();
         } else {
-            $(".email-content").show();
+            $(".item-content").show();
             $(".upload-container").hide();
         }
 
@@ -295,13 +295,13 @@ function showPreview(fileUrl) {
 
 
 function showAllDates() {
-    $(".pre-email-dates").show();
+    $(".pre-item-dates").show();
 
 
 }
 
 function hideDatesWithoutContent() {
-    $(".pre-email-dates").each(function(index, value) {
+    $(".pre-item-dates").each(function(index, value) {
         var siblings = $(value).next();
 
         for (var i = 0; i < siblings.length; i++) {

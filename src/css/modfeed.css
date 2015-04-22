@@ -7,7 +7,7 @@
     padding: 0 20px;
 }
 
-.email-title .row {
+.item-title .row {
     padding: 10px 20px;
 }
 
@@ -136,7 +136,7 @@
     float: left;
     display: none;
 }
-.email-inside-bottom > img {
+.item-inside-bottom > img {
     height: 50px;
     width: 50px;
 }
