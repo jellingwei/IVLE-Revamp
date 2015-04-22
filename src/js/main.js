@@ -64,7 +64,7 @@ function loadAnnouncementsList(predicate) {
                 '<span class="pre-announcements-reminder" data-toggle="modal" data-target="#reminderModal" data-announcement-id="' + announcement.id + '"></span>' +
                 '</div></div>' +
                 '<div class="pre-email-body">' +
-                '<h4 class="pre-email-h4">' + announcement.title + '</h4>' +
+                '<h4 class="pre-email-h4 truncate">' + announcement.title + '</h4>' +
                 '<p class="pre-email-p truncate">' + stripHtmlTags(announcement.content) + '</p></div></div>';
             announcementsContainer.append(announcementHtml);
         }
